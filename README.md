@@ -15,7 +15,7 @@ rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scr
 * no extra stylesheets
 * well tested, 100% code coverage
 
-**[Demos](http://malte-wessel.github.io/react-custom-scrollbars/) · [Documentation](https://github.com/sakhnyuk/rc-scrollbars/tree/master/docs)**
+**[Demos](https://rc-scrollbars.vercel.app/) · [Documentation](https://github.com/sakhnyuk/rc-scrollbars/tree/master/docs)**
 
 ## Installation
 ```bash
