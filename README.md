@@ -2,7 +2,7 @@ rc-scrollbars
 =========================
 rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scrollbars" target="_blank">react-custom-scrollbars</a>
 
-[![npm](https://img.shields.io/badge/npm-rc--scrollbars-brightgreen.svg?style=flat-square)]()
+[![npm](https://img.shields.io/badge/npm-rc--scrollbars-brightgreen.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars)
 [![npm version](https://img.shields.io/npm/v/rc-scrollbars.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars)
 
 * frictionless native browser scrolling
