@@ -1,8 +1,8 @@
-import { Scrollbars } from "rc-scrollbars";
-import ColoredScrollbars from "./components/ColoredScrollbars/ColoredScrollbars";
-import { Lorem } from "./components/Lorem";
-import ShadowScrollbars from "./components/ShadowScrollbars/ShadowScrollbars";
-import SpringScrollbarsExample from "./components/SpringScrollbars/SpringScrollbarsExample";
+import { Scrollbars } from 'rc-scrollbars';
+import ColoredScrollbars from './components/ColoredScrollbars/ColoredScrollbars';
+import ShadowScrollbars from './components/ShadowScrollbars/ShadowScrollbars';
+import SpringScrollbarsExample from './components/SpringScrollbars/SpringScrollbarsExample';
+import { Lorem } from 'components/Lorem';
 
 function App() {
   return (
@@ -10,11 +10,7 @@ function App() {
       <header className="flex justify-between items-center h-16">
         <h1 className="font-bold">rc-scrollbars</h1>
 
-        <a
-          href="https://github.com/sakhnyuk/rc-scrollbars"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href="https://github.com/sakhnyuk/rc-scrollbars" target="_blank" rel="noreferrer">
           Github
         </a>
       </header>
@@ -54,10 +50,9 @@ function App() {
           <div className="flex justify-between items-center mb-4">
             <div>
               <h3 className="font-bold">Default style</h3>
-              <span className="text-xs text-gray-600">
-                (with autoHide=true)
-              </span>
             </div>
+
+            <span className="text-xs text-gray-600">(with autoHide=true)</span>
 
             {/* <a
               href="https://github.com/sakhnyuk/rc-scrollbars/tree/master/examples/simple/components/DefaultScrollbars"

@@ -1,4 +1,6 @@
-export const containerStyleDefault = {
+import * as React from 'react';
+
+export const containerStyleDefault: React.CSSProperties = {
   position: 'relative',
   overflow: 'hidden',
   width: '100%',
@@ -6,11 +8,11 @@ export const containerStyleDefault = {
 };
 
 // Overrides containerStyleDefault properties
-export const containerStyleAutoHeight = {
+export const containerStyleAutoHeight: React.CSSProperties = {
   height: 'auto',
 };
 
-export const viewStyleDefault = {
+export const viewStyleDefault: React.CSSProperties = {
   position: 'absolute',
   top: 0,
   left: 0,
@@ -21,7 +23,7 @@ export const viewStyleDefault = {
 };
 
 // Overrides viewStyleDefault properties
-export const viewStyleAutoHeight = {
+export const viewStyleAutoHeight: React.CSSProperties = {
   position: 'relative',
   top: undefined,
   left: undefined,
@@ -29,38 +31,38 @@ export const viewStyleAutoHeight = {
   bottom: undefined,
 };
 
-export const viewStyleUniversalInitial = {
+export const viewStyleUniversalInitial: React.CSSProperties = {
   overflow: 'hidden',
   marginRight: 0,
   marginBottom: 0,
 };
 
-export const trackHorizontalStyleDefault = {
+export const trackHorizontalStyleDefault: React.CSSProperties = {
   position: 'absolute',
   height: 6,
 };
 
-export const trackVerticalStyleDefault = {
+export const trackVerticalStyleDefault: React.CSSProperties = {
   position: 'absolute',
   width: 6,
 };
 
-export const thumbHorizontalStyleDefault = {
+export const thumbHorizontalStyleDefault: React.CSSProperties = {
   position: 'relative',
   display: 'block',
   height: '100%',
 };
 
-export const thumbVerticalStyleDefault = {
+export const thumbVerticalStyleDefault: React.CSSProperties = {
   position: 'relative',
   display: 'block',
   width: '100%',
 };
 
-export const disableSelectStyle = {
+export const disableSelectStyle: React.CSSProperties = {
   userSelect: 'none',
 };
 
-export const disableSelectStyleReset = {
-  userSelect: '',
+export const disableSelectStyleReset: React.CSSProperties = {
+  userSelect: 'auto',
 };
