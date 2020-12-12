@@ -14,7 +14,7 @@
     "autoprefixer": "^9",
     "lodash": "^4.17.20",
     "postcss": "^7",
-    "rc-scrollbars": "^0.0.1",
+    "rc-scrollbars": "^0.0.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",

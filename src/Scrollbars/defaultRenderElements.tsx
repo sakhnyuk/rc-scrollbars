@@ -1,30 +1,34 @@
-export function renderViewDefault(props) {
+import { HTMLAttributes } from 'react';
+
+export function renderViewDefault(props: HTMLAttributes<HTMLDivElement>) {
   return <div {...props} />;
 }
 
-export function renderTrackHorizontalDefault({ style, ...props }) {
+export function renderTrackHorizontalDefault({ style, ...props }: HTMLAttributes<HTMLDivElement>) {
   const finalStyle = {
     ...style,
     right: 2,
     bottom: 2,
     left: 2,
     borderRadius: 3,
+    zIndex: 100,
   };
   return <div style={finalStyle} {...props} />;
 }
 
-export function renderTrackVerticalDefault({ style, ...props }) {
+export function renderTrackVerticalDefault({ style, ...props }: HTMLAttributes<HTMLDivElement>) {
   const finalStyle = {
     ...style,
     right: 2,
     bottom: 2,
     top: 2,
     borderRadius: 3,
+    zIndex: 100,
   };
   return <div style={finalStyle} {...props} />;
 }
 
-export function renderThumbHorizontalDefault({ style, ...props }) {
+export function renderThumbHorizontalDefault({ style, ...props }: HTMLAttributes<HTMLDivElement>) {
   const finalStyle = {
     ...style,
     cursor: 'pointer',
@@ -34,7 +38,7 @@ export function renderThumbHorizontalDefault({ style, ...props }) {
   return <div style={finalStyle} {...props} />;
 }
 
-export function renderThumbVerticalDefault({ style, ...props }) {
+export function renderThumbVerticalDefault({ style, ...props }: HTMLAttributes<HTMLDivElement>) {
   const finalStyle = {
     ...style,
     cursor: 'pointer',
