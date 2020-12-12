@@ -1,12 +1,9 @@
 rc-scrollbars
 =========================
-rejuvenated project of [react-custom-scrollbars](https://github.com/malte-wessel/react-custom-scrollbars)
+rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scrollbars" target="_blank">react-custom-scrollbars</a>
 
-[comment]: <> ([![npm]&#40;https://img.shields.io/badge/npm-react--custom--scrollbars-brightgreen.svg?style=flat-square&#41;]&#40;&#41;)
-
-[comment]: <> ([![npm version]&#40;https://img.shields.io/npm/v/react-custom-scrollbars.svg?style=flat-square&#41;]&#40;https://www.npmjs.com/package/react-custom-scrollbars&#41;)
-
-[comment]: <> ([![npm downloads]&#40;https://img.shields.io/npm/dm/react-custom-scrollbars.svg?style=flat-square&#41;]&#40;https://www.npmjs.com/package/react-custom-scrollbars&#41;)
+[![npm](https://img.shields.io/badge/npm-rc--scrollbars-brightgreen.svg?style=flat-square)]()
+[![npm version](https://img.shields.io/npm/v/rc-scrollbars.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars)
 
 * frictionless native browser scrolling
 * native scrollbars for mobile devices
@@ -23,6 +20,10 @@ rejuvenated project of [react-custom-scrollbars](https://github.com/malte-wessel
 ## Installation
 ```bash
 npm install rc-scrollbars --save
+
+# OR
+
+yarn add rc-scrollbars
 ```
 
 This assumes that you’re using [npm](http://npmjs.com/) package manager with a module bundler like [Webpack](http://webpack.github.io) or [Browserify](http://browserify.org/) to consume [CommonJS modules](http://webpack.github.io/docs/commonjs.html).
