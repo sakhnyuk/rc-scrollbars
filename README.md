@@ -86,25 +86,25 @@ All properties are documented in the [API docs](https://github.com/sakhnyuk/rc-s
 Run the simple example:
 ```bash
 # Make sure that you've installed the dependencies
-npm install
+yarn install
 # Move to example directory
-cd react-custom-scrollbars/examples/simple
-npm install
-npm start
+cd example/
+yarn install
+yarn start
 ```
 
-## Tests
+## Tests (WIP)
 ```bash
 # Make sure that you've installed the dependencies
-npm install
+yarn install
 # Run tests
-npm test
+yarn test
 ```
 
-### Code Coverage
+### Code Coverage (WIP)
 ```bash
 # Run code coverage. Results can be found in `./coverage`
-npm run test:cov
+yarn test:cov
 ```
 
 
