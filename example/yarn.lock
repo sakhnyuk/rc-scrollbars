@@ -9078,10 +9078,10 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-rc-scrollbars@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/rc-scrollbars/-/rc-scrollbars-0.0.3.tgz#5b6ffbad5eb38fc742e7583a882c12ecadd1aec9"
-  integrity sha512-/L2O8LcMFhbCeUWJ6AmHTwU2HYdWQHncfRSPOCfeM4/FfPWIw4noJnP8Zy7DaaSVcf5dl/kLLvS6M8Tdif2kWQ==
+rc-scrollbars@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/rc-scrollbars/-/rc-scrollbars-1.0.0.tgz#d25fe74509fa32f3136f6559b6019947a1636d4f"
+  integrity sha512-ANSwo+6kL/bimac/RSZvQy9HkspYebd6biXE26uCP20VvlXhszd8pAO3q6tCR11iyQkZOxCcmlQej0I/p2Bdfg==
   dependencies:
     dom-css "^2.1.0"
     prop-types "^15.7.2"
