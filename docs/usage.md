@@ -2,36 +2,34 @@
 
 ## Default Scrollbars
 
-The `<Scrollbars>` component works out of the box with some default styles. The only thing you need to care about is that the component has a `width` and `height`:
+The `<Scrollbars>` component works out of the box with some default styles. The only thing you need to care about is
+that the component has a `width` and `height`:
 
-```jsx
-import { Scrollbars } from 'rc-scrollbars';
+```jsx | pure
 
-class App extends Component {
-  render() {
-    return (
-      <Scrollbars style={{ width: 500, height: 300 }}>
-        <p>Some great content...</p>
-      </Scrollbars>
-    );
-  }
-}
+import React from 'react';
+import {Scrollbars} from 'rc-scrollbars';
+import {Lorem} from "./components/Lorem";
+
+export default () => (
+  <Scrollbars style={{width: 300, height: 300}}>
+    <Lorem/>
+  </Scrollbars>
+)
 ```
 
 Also don't forget to set the `viewport` meta tag, if you want to **support mobile devices**
 
 ```html
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 ```
 
 ## Events
 
 There are several events you can listen to:
 
-```jsx
-import { Scrollbars } from 'rc-scrollbars';
+```javascript
+import {Scrollbars} from 'rc-scrollbars';
 
 class App extends Component {
   render() {
@@ -54,13 +52,12 @@ class App extends Component {
 }
 ```
 
-
 ## Auto-hide
 
 You can activate auto-hide by setting the `autoHide` property.
 
-```jsx
-import { Scrollbars } from 'rc-scrollbars';
+```javascript
+import {Scrollbars} from 'rc-scrollbars';
 
 class App extends Component {
   render() {
@@ -82,30 +79,32 @@ class App extends Component {
 ## Auto-height
 
 You can activate auto-height by setting the `autoHeight` property.
-```jsx
-import { Scrollbars } from 'rc-scrollbars';
 
-class App extends Component {
-  render() {
-    return (
-      <Scrollbars
-        // This will activate auto-height
-        autoHeight
-        autoHeightMin={100}
-        autoHeightMax={200}>
-        <p>Some great content...</p>
-      </Scrollbars>
-    );
-  }
+```jsx
+import React from 'react';
+import {Scrollbars} from 'rc-scrollbars';
+import {Lorem} from "./components/Lorem";
+
+export default () => {
+  return (
+    <Scrollbars
+      autoHeight
+      autoHeightMin={100}
+      autoHeightMax={200}
+    >
+      <Lorem/>
+    </Scrollbars>
+  )
 }
 ```
 
 ## Universal rendering
 
-If your app runs on both client and server, activate the `universal` mode. This will ensure that the initial markup on client and server are the same:
+If your app runs on both client and server, activate the `universal` mode. This will ensure that the initial markup on
+client and server are the same:
 
-```jsx
-import { Scrollbars } from 'rc-scrollbars';
+```javascript
+import {Scrollbars} from 'rc-scrollbars';
 
 class App extends Component {
   render() {

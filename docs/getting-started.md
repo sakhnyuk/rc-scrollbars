@@ -1,10 +1,9 @@
 ---
-title: Introduction
+title: Getting started
 order: 1
 ---
 
-rc-scrollbars
-=========================
+# rc-scrollbars
 rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scrollbars" target="_blank">react-custom-scrollbars</a>
 
 [![npm](https://img.shields.io/badge/npm-rc--scrollbars-brightgreen.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars)
@@ -12,10 +11,10 @@ rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scr
 
 * frictionless native browser scrolling
 * native scrollbars for mobile devices
-* [fully customizable](https://github.com/sakhnyuk/rc-scrollbars/blob/master/docs/customization.md)
-* [auto hide](https://github.com/sakhnyuk/rc-scrollbars/blob/master/docs/usage.md#auto-hide)
-* [auto height](https://github.com/sakhnyuk/rc-scrollbars/blob/master/docs/usage.md#auto-height)
-* [universal](https://github.com/sakhnyuk/rc-scrollbars/blob/master/docs/usage.md#universal-rendering) (runs on client & server)
+* [fully customizable](/customization)
+* [auto hide](/usage#auto-hide)
+* [auto height](/usage#auto-height)
+* [universal](/usage#universal-rendering) (runs on client & server)
 * `requestAnimationFrame` for 60fps
 * no extra stylesheets
 * well tested, 100% code coverage
@@ -84,7 +83,7 @@ class CustomScrollbars extends Component {
 }
 ```
 
-All properties are documented in the [API docs](https://github.com/sakhnyuk/rc-scrollbars/blob/master/docs/API.md)
+All properties are documented in the [API docs](/API)
 
 ## Examples
 
