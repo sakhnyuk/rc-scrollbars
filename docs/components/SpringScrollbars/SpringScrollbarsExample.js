@@ -1,7 +1,7 @@
-import random from "lodash/random";
-import { Component } from "react";
-import SpringScrollbars from "./SpringScrollbars";
-import { Lorem } from "../Lorem";
+import random from 'lodash/random';
+import { Component } from 'react';
+import SpringScrollbars from './SpringScrollbars';
+import { Lorem } from '../Lorem';
 
 export default class SpringScrollbarsExample extends Component {
   constructor(props, ...rest) {
@@ -31,7 +31,7 @@ export default class SpringScrollbarsExample extends Component {
 
         <div className="text-xs text-gray-800 mt-4">
           <p>
-            The Scrollbars are animated with{" "}
+            The Scrollbars are animated with{' '}
             <a
               href="https://github.com/facebook/rebound-js"
               target="_blank"
@@ -40,11 +40,11 @@ export default class SpringScrollbarsExample extends Component {
             >
               Rebound
             </a>
-            . You can simply animate the Scrollbars with{" "}
+            . You can simply animate the Scrollbars with{' '}
             <code className="text-xs">scrollbars.scrollTop(x)</code>.
           </p>
           <p>
-            Don't forget to wrap your steps with{" "}
+            Don't forget to wrap your steps with{' '}
             <code className="text-xs">requestAnimationFrame</code>.
           </p>
         </div>
