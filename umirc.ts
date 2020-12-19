@@ -6,6 +6,12 @@ export default defineConfig({
   logo: '/logo.svg',
   favicon: '/favicon.ico',
   exportStatic: {},
-  ssr: {},
+  dynamicImport: {},
   hash: true,
+  menus: {},
+  nodeModulesTransform: {
+    type: 'none',
+    exclude: [],
+  },
+  publicPath: '/public/',
 });

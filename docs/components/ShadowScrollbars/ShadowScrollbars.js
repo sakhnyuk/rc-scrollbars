@@ -1,7 +1,7 @@
-import { Component } from "react";
-import { Scrollbars } from "rc-scrollbars";
-import PropTypes from "prop-types";
-import css from "dom-css";
+import { Component } from 'react';
+import { Scrollbars } from 'rc-scrollbars';
+import PropTypes from 'prop-types';
+import css from 'dom-css';
 
 class ShadowScrollbars extends Component {
   constructor(props, ...rest) {
@@ -29,25 +29,23 @@ class ShadowScrollbars extends Component {
     const { style, ...props } = this.props;
     const containerStyle = {
       ...style,
-      position: "relative",
+      position: 'relative',
     };
     const shadowTopStyle = {
-      position: "absolute",
+      position: 'absolute',
       top: 0,
       left: 0,
       right: 0,
       height: 10,
-      background:
-        "linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%)",
+      background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%)',
     };
     const shadowBottomStyle = {
-      position: "absolute",
+      position: 'absolute',
       bottom: 0,
       left: 0,
       right: 0,
       height: 10,
-      background:
-        "linear-gradient(to top, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%)",
+      background: 'linear-gradient(to top, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%)',
     };
     return (
       <div style={containerStyle}>
