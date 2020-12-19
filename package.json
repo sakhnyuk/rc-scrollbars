@@ -7,11 +7,13 @@
     "clean": "rimraf lib",
     "dev": "tsc",
     "build": "tsc",
-    "lint": "eslint src test example",
+    "lint": "eslint src test",
     "test": "cross-env NODE_ENV=test karma start",
     "test:watch": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run",
     "test:cov": "cross-env NODE_ENV=test COVERAGE=true karma start --single-run",
-    "prepublish": "npm run lint && npm run clean && npm run build"
+    "prepublish": "npm run lint && npm run clean && npm run build",
+    "dev-docs": "dumi dev",
+    "build-docs": "dumi build"
   },
   "repository": {
     "type": "git",
@@ -39,6 +41,7 @@
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
     "cross-env": "^7.0.3",
+    "dumi": "^1.0.38",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-config-react-app": "^6.0.0",

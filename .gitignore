@@ -6,3 +6,8 @@ lib
 coverage
 examples/simple/static
 .idea/
+
+# umi
+.umi
+.umi-production
+.env.local

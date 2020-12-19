@@ -1,6 +1,6 @@
-import { Component } from "react";
-import { Scrollbars } from "rc-scrollbars";
-import { SpringSystem, MathUtil } from "rebound";
+import { Component } from 'react';
+import { Scrollbars } from 'rc-scrollbars';
+import { SpringSystem, MathUtil } from 'rebound';
 
 export default class SpringScrollbars extends Component {
   constructor(props, ...rest) {
@@ -43,7 +43,7 @@ export default class SpringScrollbars extends Component {
       0,
       scrollHeight,
       scrollHeight * 0.2,
-      scrollHeight * 0.8
+      scrollHeight * 0.8,
     );
     this.spring.setCurrentValue(scrollTop).setAtRest();
     this.spring.setEndValue(val);

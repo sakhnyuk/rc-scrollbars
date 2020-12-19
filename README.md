@@ -32,7 +32,7 @@ This assumes that you’re using [npm](http://npmjs.com/) package manager with a
 
 This is the minimal configuration. [Check out the Documentation for advanced usage](https://github.com/sakhnyuk/rc-scrollbars/tree/master/docs).
 
-```jsx
+```javascript
 import { Scrollbars } from 'rc-scrollbars';
 
 class App extends Component {
@@ -48,7 +48,7 @@ class App extends Component {
 
 The `<Scrollbars>` component is completely customizable. Check out the following code:
 
-```jsx
+```javascript
 import { Scrollbars } from 'rc-scrollbars';
 
 class CustomScrollbars extends Component {
