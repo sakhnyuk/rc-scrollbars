@@ -8,6 +8,7 @@ rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scr
 
 [![npm](https://img.shields.io/badge/npm-rc--scrollbars-brightgreen.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars)
 [![npm version](https://img.shields.io/npm/v/rc-scrollbars.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars)
+[![npm downloads](https://img.shields.io/npm/dm/rc-scrollbars.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars)
 
 * frictionless native browser scrolling
 * native scrollbars for mobile devices
@@ -19,7 +20,7 @@ rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scr
 * no extra stylesheets
 * well tested, 100% code coverage
 
-**[Demos](https://rc-scrollbars.vercel.app/) · [Documentation](https://github.com/sakhnyuk/rc-scrollbars/tree/master/docs)**
+**[Demos](/demo) · [API](/api)**
 
 ## Installation
 ```bash
