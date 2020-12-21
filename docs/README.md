@@ -3,7 +3,8 @@ title: Getting started
 order: 1
 ---
 
-# rc-scrollbars
+# [rc-scrollbars](https://rc-scrollbars.vercel.app/)
+
 rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scrollbars" target="_blank">react-custom-scrollbars</a>
 
 [![npm](https://img.shields.io/badge/npm-rc--scrollbars-brightgreen.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars)
@@ -35,7 +36,7 @@ This assumes that you’re using [npm](http://npmjs.com/) package manager with a
 
 ## Usage
 
-This is the minimal configuration. [Check out the Documentation for advanced usage](https://github.com/sakhnyuk/rc-scrollbars/tree/master/docs).
+This is the minimal configuration. [Check out the Documentation for advanced usage](/usage).
 
 ```javascript
 import { Scrollbars } from 'rc-scrollbars';
@@ -88,14 +89,12 @@ All properties are documented in the [API docs](/API)
 
 ## Examples
 
-Run the simple example:
+Run the documentation:
 ```bash
 # Make sure that you've installed the dependencies
-yarn install
-# Move to example directory
-cd example/
-yarn install
-yarn start
+yarn
+# Run documentation project in dev env
+yarn dev-docs
 ```
 
 ## Tests (WIP)
