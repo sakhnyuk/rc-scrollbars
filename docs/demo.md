@@ -1,5 +1,6 @@
 ---
 title: Demo
+order: 5
 ---
 
 # Demo of rc-scrollbars

@@ -85,7 +85,7 @@ class CustomScrollbars extends Component {
 }
 ```
 
-All properties are documented in the [API docs](/API)
+All properties are documented in the [API docs](/api)
 
 ## Examples
 

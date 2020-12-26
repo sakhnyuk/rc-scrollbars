@@ -1,3 +1,8 @@
+---
+title: Customization
+order: 3
+---
+
 # Customization
 
 The `<Scrollbars>` component consists of the following elements:
