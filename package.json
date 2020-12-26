@@ -7,7 +7,7 @@
     "clean": "rimraf lib",
     "dev:lib": "tsc -w",
     "dev:docs": "dumi dev",
-    "dev": "concurrently -k \"npm:dev:*\"",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"LIB,DOCS\" -c \"bgMagenta.bold,bgGreen.bold\" \"npm run dev:lib\" \"npm run dev:docs\"",
     "build:lib": "tsc",
     "build:docs": "dumi build",
     "lint": "eslint src test",
