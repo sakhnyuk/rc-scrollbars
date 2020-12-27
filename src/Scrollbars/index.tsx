@@ -1,4 +1,5 @@
-import React, { Component, createElement, cloneElement, HTMLAttributes } from 'react';
+import * as React from 'react';
+import { Component, createElement, cloneElement, HTMLAttributes } from 'react';
 import raf, { cancel as caf } from 'raf';
 import css from 'dom-css';
 import { ScrollValues } from './types';
