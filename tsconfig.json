@@ -14,7 +14,7 @@
       "esnext"
     ],
     "allowJs": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "declaration": true,
     "outDir": "lib",
     "removeComments": true,
