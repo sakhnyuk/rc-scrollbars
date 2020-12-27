@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 
 export function renderViewDefault(props: HTMLAttributes<HTMLDivElement>) {
   return <div {...props} />;
