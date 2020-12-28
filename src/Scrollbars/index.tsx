@@ -689,7 +689,6 @@ export default class Scrollbars extends Component<Props, State> {
             ref: (ref) => {
               this.view = ref;
             },
-            className: 'scrollView',
           },
           children,
         ),
