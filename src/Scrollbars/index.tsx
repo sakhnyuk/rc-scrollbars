@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { Component, createElement, cloneElement, HTMLAttributes } from 'react';
 import raf, { cancel as caf } from 'raf';
 import css from 'dom-css';
-import { Component, createElement, cloneElement, HTMLAttributes } from 'react';
 import { ScrollValues } from './types';
 
 import getScrollbarWidth from '../utils/getScrollbarWidth';
@@ -689,7 +689,6 @@ export default class Scrollbars extends Component<Props, State> {
             ref: (ref) => {
               this.view = ref;
             },
-            className: 'scrollView',
           },
           children,
         ),
