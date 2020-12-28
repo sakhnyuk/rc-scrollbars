@@ -1,6 +1,6 @@
 {
   "name": "rc-scrollbars",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React scrollbars component",
   "main": "lib/index.js",
   "scripts": {
