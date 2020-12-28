@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Component, createElement, cloneElement, HTMLAttributes } from 'react';
+import { cloneElement, Component, createElement, HTMLAttributes } from 'react';
 import raf, { cancel as caf } from 'raf';
 import css from 'dom-css';
 import { ScrollValues } from './types';
@@ -9,50 +9,52 @@ import returnFalse from '../utils/returnFalse';
 import getInnerWidth from '../utils/getInnerWidth';
 import getInnerHeight from '../utils/getInnerHeight';
 import {
-  containerStyleDefault,
   containerStyleAutoHeight,
-  viewStyleDefault,
-  viewStyleAutoHeight,
-  viewStyleUniversalInitial,
-  trackHorizontalStyleDefault,
-  trackVerticalStyleDefault,
-  thumbHorizontalStyleDefault,
-  thumbVerticalStyleDefault,
+  containerStyleDefault,
   disableSelectStyle,
   disableSelectStyleReset,
+  thumbHorizontalStyleDefault,
+  thumbVerticalStyleDefault,
+  trackHorizontalStyleDefault,
+  trackVerticalStyleDefault,
+  viewStyleAutoHeight,
+  viewStyleDefault,
+  viewStyleUniversalInitial,
 } from './styles';
 
 import {
-  renderViewDefault,
-  renderTrackHorizontalDefault,
-  renderTrackVerticalDefault,
   renderThumbHorizontalDefault,
   renderThumbVerticalDefault,
+  renderTrackHorizontalDefault,
+  renderTrackVerticalDefault,
+  renderViewDefault,
 } from './defaultRenderElements';
 
 interface Props {
+  autoHeight: boolean;
+  autoHeightMax: number | string;
+  autoHeightMin: number | string;
+  autoHide: boolean;
+  autoHideDuration: number;
+  autoHideTimeout: number;
+  /* class applied to the root element */
+  className?: string;
+  hideTracksWhenNotNeeded?: boolean;
   onScroll?: (e: React.UIEvent<HTMLElement>) => void;
   onScrollFrame?: (values: ScrollValues) => void;
   onScrollStart?: () => void;
   onScrollStop?: () => void;
   onUpdate?: (values: ScrollValues) => void;
-  renderView: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
-  renderTrackHorizontal: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
-  renderTrackVertical: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
   renderThumbHorizontal: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
   renderThumbVertical: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
-  tagName: string;
-  thumbSize?: number;
-  thumbMinSize: number;
-  hideTracksWhenNotNeeded?: boolean;
-  autoHide: boolean;
-  autoHideTimeout: number;
-  autoHideDuration: number;
-  autoHeight: boolean;
-  autoHeightMin: number | string;
-  autoHeightMax: number | string;
-  universal: boolean;
+  renderTrackHorizontal: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
+  renderTrackVertical: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
+  renderView: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
   style?: React.CSSProperties;
+  tagName: string;
+  thumbMinSize: number;
+  thumbSize?: number;
+  universal: boolean;
 }
 
 interface State {
@@ -60,40 +62,40 @@ interface State {
 }
 
 export default class Scrollbars extends Component<Props, State> {
-  requestFrame?: number;
-  hideTracksTimeout: any; // Node timeout bug
+  container: Element | null = null;
   detectScrollingInterval: any; // Node timeout bug
-  view?: HTMLElement;
-  trackHorizontal?: HTMLDivElement;
-  thumbHorizontal?: HTMLDivElement;
-  trackVertical?: HTMLDivElement;
-  thumbVertical?: HTMLDivElement;
-  viewScrollLeft?: number;
-  viewScrollTop?: number;
-  prevPageX?: number;
-  prevPageY?: number;
   dragging: boolean = false;
-  trackMouseOver: boolean = false;
-  scrolling: boolean = false;
+  hideTracksTimeout: any; // Node timeout bug
   lastViewScrollLeft?: number;
   lastViewScrollTop?: number;
-  container: Element | null = null;
+  prevPageX?: number;
+  prevPageY?: number;
+  requestFrame?: number;
+  scrolling: boolean = false;
+  thumbHorizontal?: HTMLDivElement;
+  thumbVertical?: HTMLDivElement;
+  trackHorizontal?: HTMLDivElement;
+  trackMouseOver: boolean = false;
+  trackVertical?: HTMLDivElement;
+  view?: HTMLElement;
+  viewScrollLeft?: number;
+  viewScrollTop?: number;
 
   static defaultProps = {
-    renderView: renderViewDefault,
-    renderTrackHorizontal: renderTrackHorizontalDefault,
-    renderTrackVertical: renderTrackVerticalDefault,
+    autoHeight: false,
+    autoHeightMax: 200,
+    autoHeightMin: 0,
+    autoHide: false,
+    autoHideDuration: 200,
+    autoHideTimeout: 1000,
+    hideTracksWhenNotNeeded: false,
     renderThumbHorizontal: renderThumbHorizontalDefault,
     renderThumbVertical: renderThumbVerticalDefault,
+    renderTrackHorizontal: renderTrackHorizontalDefault,
+    renderTrackVertical: renderTrackVerticalDefault,
+    renderView: renderViewDefault,
     tagName: 'div',
     thumbMinSize: 30,
-    hideTracksWhenNotNeeded: false,
-    autoHide: false,
-    autoHideTimeout: 1000,
-    autoHideDuration: 200,
-    autoHeight: false,
-    autoHeightMin: 0,
-    autoHeightMax: 200,
     universal: false,
   };
 
