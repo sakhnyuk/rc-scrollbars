@@ -10,6 +10,7 @@
     "dev": "concurrently -k -p \"[{name}]\" -n \"LIB,DOCS\" -c \"bgMagenta.bold,bgGreen.bold\" \"npm run dev:lib\" \"npm run dev:docs\"",
     "build:lib": "tsc",
     "build:docs": "dumi build",
+    "build-docs": "dumi build",
     "lint": "eslint src test",
     "test": "cross-env NODE_ENV=test karma start",
     "test:watch": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run",

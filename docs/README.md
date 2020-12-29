@@ -3,7 +3,9 @@ title: Getting started
 order: 1
 ---
 
-# [rc-scrollbars](https://rc-scrollbars.vercel.app/)
+# rc-scrollbars
+
+React scrollbars component
 
 rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scrollbars" target="_blank">react-custom-scrollbars</a>
 
@@ -87,25 +89,24 @@ class CustomScrollbars extends Component {
 
 All properties are documented in the [API docs](/api)
 
-## Examples
+## Run fork on your PC
 
-Run the documentation:
 ```bash
 # Make sure that you've installed the dependencies
 yarn
-# Run documentation project in dev env
-yarn dev-docs
+# Run tsc of Scrollbars in watch mode and documentation project in dev env
+yarn dev
 ```
 
-## Tests (WIP)
+## Tests (WIP - don't work right now)
 ```bash
 # Make sure that you've installed the dependencies
-yarn install
+yarn
 # Run tests
 yarn test
 ```
 
-### Code Coverage (WIP)
+### Code Coverage (WIP - don't work right now)
 ```bash
 # Run code coverage. Results can be found in `./coverage`
 yarn test:cov
