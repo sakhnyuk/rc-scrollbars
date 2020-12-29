@@ -17,7 +17,7 @@ import { Scrollbars } from 'rc-scrollbars';
 import { Lorem } from './components/Lorem';
 
 export default () => (
-  <Scrollbars style={{ width: 300, height: 300 }}>
+  <Scrollbars style={{ maxWidth: 600, height: 300 }}>
     <Lorem />
   </Scrollbars>
 );
@@ -33,8 +33,8 @@ import { Scrollbars } from 'rc-scrollbars';
 import { Lorem } from './components/Lorem';
 
 export default () => (
-  <Scrollbars style={{ width: 300, height: 300 }}>
-    <div style={{ width: 500 }}>
+  <Scrollbars style={{ maxWidth: 600, height: 300 }}>
+    <div style={{ width: 800 }}>
       <Lorem />
     </div>
   </Scrollbars>
@@ -51,7 +51,7 @@ import { Lorem } from './components/Lorem';
 export default class App extends React.Component {
   render() {
     return (
-      <Scrollbars style={{ height: 300 }} autoHide>
+      <Scrollbars style={{ maxWidth: 600, height: 300 }} autoHide>
         <Lorem />
       </Scrollbars>
     );
@@ -61,7 +61,7 @@ export default class App extends React.Component {
 
 # Scrollbar customization
 
-## Colored Scrollbar
+## Colored Scrollbar view
 
 ```jsx
 /**
@@ -73,29 +73,76 @@ import ColoredScrollbars from './components/ColoredScrollbars';
 import { Lorem } from './components/Lorem';
 
 export default () => (
-  <ColoredScrollbars style={{ height: 300 }}>
+  <ColoredScrollbars style={{ maxWidth: 600, height: 300 }}>
     <Lorem />
   </ColoredScrollbars>
 );
 ```
 
-## View customization
+## Scrollbar View with shadow
 
 ```jsx
 /**
- * title: Styled view
+ * title: Shadow view
  */
 import React from 'react';
 import { Scrollbars } from 'rc-scrollbars';
 import { Lorem } from './components/Lorem';
-import ShadowScrollbars from './components/ShadowScrollbars/ShadowScrollbars'
+import ShadowScrollbars from './components/ShadowScrollbars/ShadowScrollbars';
 
 export default class App extends React.Component {
   render() {
     return (
-      <ShadowScrollbars style={{ height: 300 }} autoHide>
+      <ShadowScrollbars style={{ maxWidth: 600, height: 300 }} autoHide>
         <Lorem />
       </ShadowScrollbars>
+    );
+  }
+}
+```
+
+## Custom scrollbar
+
+```tsx
+/**
+ * title: Styled scrollbar
+ */
+import React from 'react';
+import { Scrollbars } from 'rc-scrollbars';
+import { Lorem } from './components/Lorem';
+
+export default class App extends React.Component {
+  thumbVertical({style, ...props}: HTMLAttributes<HTMLDivElement>) {
+    const finalStyle = {
+      ...style,
+      cursor: 'pointer',
+      backgroundColor: 'rgba(0,255,0,.6)',
+    };
+
+    return <div style={finalStyle}  {...props} />;
+  }
+
+  thumbHorizontal({style, ...props}: HTMLAttributes<HTMLDivElement>) {
+    const finalStyle = {
+      ...style,
+      cursor: 'pointer',
+      backgroundColor: 'rgba(255,0,0,.6)',
+    };
+
+    return <div style={finalStyle}  {...props} />;
+  }
+
+  render() {
+    return (
+      <Scrollbars
+        style={{ maxWidth: 600, height: 300 }}
+        renderThumbVertical={this.thumbVertical}
+        renderThumbHorizontal={this.thumbHorizontal}
+      >
+        <div style={{ width: 800 }}>
+          <Lorem />
+        </div>
+      </Scrollbars>
     );
   }
 }
@@ -108,13 +155,11 @@ export default class App extends React.Component {
  * title: Spring Scrollbar
  */
 import React from 'react';
-import SpringScrollbarsExample from './components/SpringScrollbars/SpringScrollbarsExample'
+import SpringScrollbarsExample from './components/SpringScrollbars/SpringScrollbarsExample';
 
 export default class App extends React.Component {
   render() {
-    return (
-      <SpringScrollbarsExample />
-    );
+    return <SpringScrollbarsExample />;
   }
 }
 ```

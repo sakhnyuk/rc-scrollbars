@@ -36,7 +36,7 @@ This assumes that you’re using [npm](http://npmjs.com/) package manager with a
 
 ## Usage
 
-This is the minimal configuration. [Check out the Documentation for advanced usage](/usage).
+This is the minimal configuration. [Check out the **Usage** page for advanced examples](/usage).
 
 ```javascript
 import { Scrollbars } from 'rc-scrollbars';
