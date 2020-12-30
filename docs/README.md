@@ -36,6 +36,14 @@ yarn add rc-scrollbars
 
 This assumes that you’re using [npm](http://npmjs.com/) package manager with a module bundler like [Webpack](http://webpack.github.io) or [Browserify](http://browserify.org/) to consume [CommonJS modules](http://webpack.github.io/docs/commonjs.html).
 
+## MacOS scrollbars explained
+
+![scrollbar-macos](/scrollbar-macos.png)
+
+MacOS have 2 options of scrollbars visibility:
+- **Automatically based on mouse and trackpad** and **When scrolling** - Scrollbar thumb visible only while scrolling. Browsers don't add scrollbar blocks and only scrollbar thumbs placed over scroll block. **rc-scrollbars v1 don't render scroll tracks and thumbs** 
+- **Always** - Show scrollbar always. In that option, browsers add system scrollbars like on Windows and Linux. **rc-scrollbars** working as expected.
+
 ## Usage
 
 This is the minimal configuration. [Check out the **Usage** page for advanced examples](/usage).
@@ -97,21 +105,6 @@ yarn
 # Run tsc of Scrollbars in watch mode and the documentation project in dev env
 yarn dev
 ```
-
-## Tests (WIP - don't work right now)
-```bash
-# Make sure that you've installed the dependencies
-yarn
-# Run tests
-yarn test
-```
-
-### Code Coverage (WIP - don't work right now)
-```bash
-# Run code coverage. Results can be found in `./coverage`
-yarn test:cov
-```
-
 
 ## License
 
