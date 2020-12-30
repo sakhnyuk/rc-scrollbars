@@ -5,9 +5,9 @@ order: 1
 
 # rc-scrollbars
 
-React scrollbars component
+React scrollbars component.
 
-rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scrollbars" target="_blank">react-custom-scrollbars</a>
+`rc-scrollbars` is rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scrollbars" target="_blank">react-custom-scrollbars</a>
 
 [![npm](https://img.shields.io/badge/npm-rc--scrollbars-brightgreen.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars)
 [![npm version](https://img.shields.io/npm/v/rc-scrollbars.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars)
@@ -23,7 +23,7 @@ rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scr
 * no extra stylesheets
 * well tested, 100% code coverage
 
-**[Demos](/demo) · [API](/api)**
+#### **[Demos](/demo) · [API](/api)  ·  [GitHub](https://github.com/sakhnyuk/rc-scrollbars)**
 
 ## Installation
 ```bash
@@ -89,12 +89,12 @@ class CustomScrollbars extends Component {
 
 All properties are documented in the [API docs](/api)
 
-## Run fork on your PC
+## Run project locally
 
 ```bash
 # Make sure that you've installed the dependencies
 yarn
-# Run tsc of Scrollbars in watch mode and documentation project in dev env
+# Run tsc of Scrollbars in watch mode and the documentation project in dev env
 yarn dev
 ```
 
