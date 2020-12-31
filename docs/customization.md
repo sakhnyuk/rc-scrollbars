@@ -1,3 +1,8 @@
+---
+title: Customization
+order: 3
+---
+
 # Customization
 
 The `<Scrollbars>` component consists of the following elements:
@@ -103,6 +108,4 @@ class CustomScrollbars extends Component {
 }
 ```
 
-Check out these examples for some inspiration:
-* [ColoredScrollbars](https://github.com/sakhnyuk/rc-scrollbars/tree/main/example/src/components/ColoredScrollbars)
-* [ShadowScrollbars](https://github.com/sakhnyuk/rc-scrollbars/tree/main/example/src/components/ShadowScrollbars)
+### Check out [**DEMO**](/demo) for some inspiration

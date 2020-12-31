@@ -1,27 +1,33 @@
+---
+title: Usage
+order: 2
+---
+
 # Usage
 
 ## Default Scrollbars
 
-The `<Scrollbars>` component works out of the box with some default styles. The only thing you need to care about is
-that the component has a `width` and `height`:
+The `<Scrollbars>` component works out of the box with some default styles. The only thing you need to care about is that the component has a `width` and `height`:
 
 ```jsx | pure
-
 import React from 'react';
-import {Scrollbars} from 'rc-scrollbars';
-import {Lorem} from "./components/Lorem";
+import { Scrollbars } from 'rc-scrollbars';
+import { Lorem } from './components/Lorem';
 
 export default () => (
-  <Scrollbars style={{width: 300, height: 300}}>
-    <Lorem/>
+  <Scrollbars style={{ width: 300, height: 300 }}>
+    <Lorem />
   </Scrollbars>
-)
+);
 ```
 
 Also don't forget to set the `viewport` meta tag, if you want to **support mobile devices**
 
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+/>
 ```
 
 ## Events
@@ -29,7 +35,7 @@ Also don't forget to set the `viewport` meta tag, if you want to **support mobil
 There are several events you can listen to:
 
 ```javascript
-import {Scrollbars} from 'rc-scrollbars';
+import { Scrollbars } from 'rc-scrollbars';
 
 class App extends Component {
   render() {
@@ -44,7 +50,8 @@ class App extends Component {
         // Called when scrolling stops
         onScrollStop={this.handlenScrollStop}
         // Called when ever the component is updated. Runs inside the animation frame
-        onUpdate={this.handleUpdate}>
+        onUpdate={this.handleUpdate}
+      >
         <p>Some great content...</p>
       </Scrollbars>
     );
@@ -56,8 +63,10 @@ class App extends Component {
 
 You can activate auto-hide by setting the `autoHide` property.
 
+Check out [demo](/demo#auto-hide)
+
 ```javascript
-import {Scrollbars} from 'rc-scrollbars';
+import { Scrollbars } from 'rc-scrollbars';
 
 class App extends Component {
   render() {
@@ -68,7 +77,8 @@ class App extends Component {
         // Hide delay in ms
         autoHideTimeout={1000}
         // Duration for hide animation in ms.
-        autoHideDuration={200}>
+        autoHideDuration={200}
+      >
         <p>Some great content...</p>
       </Scrollbars>
     );
@@ -80,31 +90,26 @@ class App extends Component {
 
 You can activate auto-height by setting the `autoHeight` property.
 
-```jsx
+```jsx pure
 import React from 'react';
-import {Scrollbars} from 'rc-scrollbars';
-import {Lorem} from "./components/Lorem";
+import { Scrollbars } from 'rc-scrollbars';
+import { Lorem } from './components/Lorem';
 
 export default () => {
   return (
-    <Scrollbars
-      autoHeight
-      autoHeightMin={100}
-      autoHeightMax={200}
-    >
-      <Lorem/>
+    <Scrollbars autoHeight autoHeightMin={100} autoHeightMax={200}>
+      <Lorem />
     </Scrollbars>
-  )
-}
+  );
+};
 ```
 
 ## Universal rendering
 
-If your app runs on both client and server, activate the `universal` mode. This will ensure that the initial markup on
-client and server are the same:
+If your app runs on both client and server, activate the `universal` mode. This will ensure that the initial markup on client and server are the same:
 
 ```javascript
-import {Scrollbars} from 'rc-scrollbars';
+import { Scrollbars } from 'rc-scrollbars';
 
 class App extends Component {
   render() {
