@@ -2,7 +2,7 @@ import * as React from 'react';
 import { cloneElement, Component, createElement, HTMLAttributes } from 'react';
 import raf, { cancel as caf } from 'raf';
 import css from 'dom-css';
-import { ScrollValues } from './types';
+import { ScrollValues, StyleClasses } from './types';
 
 import getScrollbarWidth from '../utils/getScrollbarWidth';
 import returnFalse from '../utils/returnFalse';
@@ -39,6 +39,7 @@ interface Props {
   autoHideTimeout: number;
   /* class applied to the root element */
   className?: string;
+  classes: StyleClasses;
   hideTracksWhenNotNeeded?: boolean;
   onScroll?: (e: React.UIEvent<HTMLElement>) => void;
   onScrollFrame?: (values: ScrollValues) => void;
@@ -586,29 +587,30 @@ export default class Scrollbars extends Component<Props, State> {
     const scrollbarWidth = getScrollbarWidth();
     /* eslint-disable no-unused-vars */
     const {
+      autoHeight,
+      autoHeightMax,
+      autoHeightMin,
+      autoHide,
+      autoHideDuration,
+      autoHideTimeout,
+      children,
+      classes,
+      hideTracksWhenNotNeeded,
       onScroll,
       onScrollFrame,
       onScrollStart,
       onScrollStop,
       onUpdate,
-      renderView,
-      renderTrackHorizontal,
-      renderTrackVertical,
       renderThumbHorizontal,
       renderThumbVertical,
-      tagName,
-      hideTracksWhenNotNeeded,
-      autoHide,
-      autoHideTimeout,
-      autoHideDuration,
-      thumbSize,
-      thumbMinSize,
-      universal,
-      autoHeight,
-      autoHeightMin,
-      autoHeightMax,
+      renderTrackHorizontal,
+      renderTrackVertical,
+      renderView,
       style,
-      children,
+      tagName,
+      thumbMinSize,
+      thumbSize,
+      universal,
       ...props
     } = this.props;
     /* eslint-enable no-unused-vars */
@@ -678,6 +680,7 @@ export default class Scrollbars extends Component<Props, State> {
       tagName,
       {
         ...props,
+        className: classes.root,
         style: containerStyle,
         ref: (ref) => {
           this.container = ref;
@@ -688,10 +691,10 @@ export default class Scrollbars extends Component<Props, State> {
           renderView({ style: viewStyle }),
           {
             key: 'view',
+            className: classes.view,
             ref: (ref) => {
               this.view = ref;
             },
-            className: 'scrollView',
           },
           children,
         ),
@@ -699,11 +702,13 @@ export default class Scrollbars extends Component<Props, State> {
           renderTrackHorizontal({ style: trackHorizontalStyle }),
           {
             key: 'trackHorizontal',
+            className: classes.trackHorizontal,
             ref: (ref) => {
               this.trackHorizontal = ref;
             },
           },
           cloneElement(renderThumbHorizontal({ style: thumbHorizontalStyleDefault }), {
+            className: classes.thumbHorizontal,
             ref: (ref) => {
               this.thumbHorizontal = ref;
             },
@@ -713,11 +718,13 @@ export default class Scrollbars extends Component<Props, State> {
           renderTrackVertical({ style: trackVerticalStyle }),
           {
             key: 'trackVertical',
+            className: classes.trackVertical,
             ref: (ref) => {
               this.trackVertical = ref;
             },
           },
           cloneElement(renderThumbVertical({ style: thumbVerticalStyleDefault }), {
+            className: classes.thumbVertical,
             ref: (ref) => {
               this.thumbVertical = ref;
             },

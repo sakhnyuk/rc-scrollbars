@@ -8,3 +8,12 @@ export interface ScrollValues {
   clientWidth: number;
   clientHeight: number;
 }
+
+export interface StyleClasses {
+  root: string;
+  view: string;
+  trackHorizontal: string;
+  thumbHorizontal: string;
+  trackVertical: string;
+  thumbVertical: string;
+}
