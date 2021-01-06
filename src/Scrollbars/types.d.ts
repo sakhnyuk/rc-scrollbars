@@ -1,3 +1,5 @@
+import { CSSProperties, HTMLAttributes } from 'react';
+
 export interface ScrollValues {
   left: number;
   top: number;
@@ -16,4 +18,13 @@ export interface StyleClasses {
   thumbHorizontal: string;
   trackVertical: string;
   thumbVertical: string;
+}
+
+export interface CustomRenderProps extends HTMLAttributes<HTMLDivElement> {
+  style: CSSProperties;
+  className: string;
+}
+
+export interface CustomRenderer {
+  (props: CustomRenderProps): JSX.Element;
 }

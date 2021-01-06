@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { cloneElement, Component, createElement, HTMLAttributes } from 'react';
+import { cloneElement, Component, createElement } from 'react';
 import raf, { cancel as caf } from 'raf';
 import css from 'dom-css';
-import { ScrollValues, StyleClasses } from './types';
+import { CustomRenderer, ScrollValues, StyleClasses } from './types';
 
 import getScrollbarWidth from '../utils/getScrollbarWidth';
 import returnFalse from '../utils/returnFalse';
@@ -13,22 +13,13 @@ import {
   containerStyleDefault,
   disableSelectStyle,
   disableSelectStyleReset,
-  thumbHorizontalStyleDefault,
-  thumbVerticalStyleDefault,
+  thumbStyleDefault,
   trackHorizontalStyleDefault,
   trackVerticalStyleDefault,
   viewStyleAutoHeight,
   viewStyleDefault,
   viewStyleUniversalInitial,
 } from './styles';
-
-import {
-  renderThumbHorizontalDefault,
-  renderThumbVerticalDefault,
-  renderTrackHorizontalDefault,
-  renderTrackVerticalDefault,
-  renderViewDefault,
-} from './defaultRenderElements';
 
 interface Props {
   autoHeight: boolean;
@@ -46,11 +37,11 @@ interface Props {
   onScrollStart?: () => void;
   onScrollStop?: () => void;
   onUpdate?: (values: ScrollValues) => void;
-  renderThumbHorizontal: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
-  renderThumbVertical: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
-  renderTrackHorizontal: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
-  renderTrackVertical: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
-  renderView: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
+  renderThumbHorizontal: CustomRenderer;
+  renderThumbVertical: CustomRenderer;
+  renderTrackHorizontal: CustomRenderer;
+  renderTrackVertical: CustomRenderer;
+  renderView: CustomRenderer;
   style?: React.CSSProperties;
   tagName: string;
   thumbMinSize: number;
@@ -90,11 +81,11 @@ export default class Scrollbars extends Component<Props, State> {
     autoHideDuration: 200,
     autoHideTimeout: 1000,
     hideTracksWhenNotNeeded: false,
-    renderThumbHorizontal: renderThumbHorizontalDefault,
-    renderThumbVertical: renderThumbVerticalDefault,
-    renderTrackHorizontal: renderTrackHorizontalDefault,
-    renderTrackVertical: renderTrackVerticalDefault,
-    renderView: renderViewDefault,
+    renderThumbHorizontal: (props) => <div {...props} />,
+    renderThumbVertical: (props) => <div {...props} />,
+    renderTrackHorizontal: (props) => <div {...props} />,
+    renderTrackVertical: (props) => <div {...props} />,
+    renderView: (props) => <div {...props} />,
     tagName: 'div',
     thumbMinSize: 30,
     universal: false,
@@ -688,10 +679,12 @@ export default class Scrollbars extends Component<Props, State> {
       },
       [
         cloneElement(
-          renderView({ style: viewStyle }),
+          renderView({
+            style: viewStyle,
+            className: classes.view,
+          }),
           {
             key: 'view',
-            className: classes.view,
             ref: (ref) => {
               this.view = ref;
             },
@@ -699,36 +692,50 @@ export default class Scrollbars extends Component<Props, State> {
           children,
         ),
         cloneElement(
-          renderTrackHorizontal({ style: trackHorizontalStyle }),
+          renderTrackHorizontal({
+            style: trackHorizontalStyle,
+            className: classes.trackHorizontal,
+          }),
           {
             key: 'trackHorizontal',
-            className: classes.trackHorizontal,
             ref: (ref) => {
               this.trackHorizontal = ref;
             },
           },
-          cloneElement(renderThumbHorizontal({ style: thumbHorizontalStyleDefault }), {
-            className: classes.thumbHorizontal,
-            ref: (ref) => {
-              this.thumbHorizontal = ref;
+          cloneElement(
+            renderThumbHorizontal({
+              style: thumbStyleDefault,
+              className: classes.thumbHorizontal,
+            }),
+            {
+              ref: (ref) => {
+                this.thumbHorizontal = ref;
+              },
             },
-          }),
+          ),
         ),
         cloneElement(
-          renderTrackVertical({ style: trackVerticalStyle }),
+          renderTrackVertical({
+            style: trackVerticalStyle,
+            className: classes.trackVertical,
+          }),
           {
             key: 'trackVertical',
-            className: classes.trackVertical,
             ref: (ref) => {
               this.trackVertical = ref;
             },
           },
-          cloneElement(renderThumbVertical({ style: thumbVerticalStyleDefault }), {
-            className: classes.thumbVertical,
-            ref: (ref) => {
-              this.thumbVertical = ref;
+          cloneElement(
+            renderThumbVertical({
+              style: thumbStyleDefault,
+              className: classes.thumbVertical,
+            }),
+            {
+              ref: (ref) => {
+                this.thumbVertical = ref;
+              },
             },
-          }),
+          ),
         ),
       ],
     );
