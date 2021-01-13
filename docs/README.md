@@ -4,7 +4,10 @@ order: 1
 ---
 
 # rc-scrollbars
-rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scrollbars" target="_blank">react-custom-scrollbars</a>
+
+React scrollbars component.
+
+`rc-scrollbars` is rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scrollbars" target="_blank">react-custom-scrollbars</a>
 
 [![npm](https://img.shields.io/badge/npm-rc--scrollbars-brightgreen.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars)
 [![npm version](https://img.shields.io/npm/v/rc-scrollbars.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars)
@@ -20,7 +23,7 @@ rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scr
 * no extra stylesheets
 * well tested, 100% code coverage
 
-**[Demos](/demo) · [API](/api)**
+#### **[Demos](/demo) · [API](/api)  ·  [GitHub](https://github.com/sakhnyuk/rc-scrollbars)**
 
 ## Installation
 ```bash
@@ -33,9 +36,17 @@ yarn add rc-scrollbars
 
 This assumes that you’re using [npm](http://npmjs.com/) package manager with a module bundler like [Webpack](http://webpack.github.io) or [Browserify](http://browserify.org/) to consume [CommonJS modules](http://webpack.github.io/docs/commonjs.html).
 
+## MacOS scrollbars explained
+
+![scrollbar-macos](/scrollbar-macos.png)
+
+MacOS have 2 options of scrollbars visibility:
+- **Automatically based on mouse and trackpad** and **When scrolling** - Scrollbar thumb visible only while scrolling. Browsers don't add scrollbar blocks and only scrollbar thumbs placed over scroll block. **rc-scrollbars v1 don't render scroll tracks and thumbs** 
+- **Always** - Show scrollbar always. In that option, browsers add system scrollbars like on Windows and Linux. **rc-scrollbars** working as expected.
+
 ## Usage
 
-This is the minimal configuration. [Check out the Documentation for advanced usage](https://github.com/sakhnyuk/rc-scrollbars/tree/master/docs).
+This is the minimal configuration. [Check out the **Usage** page for advanced examples](/usage).
 
 ```javascript
 import { Scrollbars } from 'rc-scrollbars';
@@ -84,34 +95,16 @@ class CustomScrollbars extends Component {
 }
 ```
 
-All properties are documented in the [API docs](/API)
+All properties are documented in the [API docs](/api)
 
-## Examples
+## Run project locally
 
-Run the simple example:
 ```bash
 # Make sure that you've installed the dependencies
-yarn install
-# Move to example directory
-cd example/
-yarn install
-yarn start
+yarn
+# Run tsc of Scrollbars in watch mode and the documentation project in dev env
+yarn dev
 ```
-
-## Tests (WIP)
-```bash
-# Make sure that you've installed the dependencies
-yarn install
-# Run tests
-yarn test
-```
-
-### Code Coverage (WIP)
-```bash
-# Run code coverage. Results can be found in `./coverage`
-yarn test:cov
-```
-
 
 ## License
 

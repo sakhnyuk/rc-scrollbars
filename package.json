@@ -1,19 +1,21 @@
 {
   "name": "rc-scrollbars",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React scrollbars component",
   "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf lib",
-    "dev": "tsc",
-    "build": "tsc",
+    "dev:lib": "tsc -w",
+    "dev:docs": "dumi dev",
+    "dev": "concurrently -k -p \"[{name}]\" -n \"LIB,DOCS\" -c \"bgMagenta.bold,bgGreen.bold\" \"npm run dev:lib\" \"npm run dev:docs\"",
+    "build:lib": "tsc",
+    "build:docs": "dumi build",
+    "build-docs": "dumi build",
     "lint": "eslint src test",
     "test": "cross-env NODE_ENV=test karma start",
     "test:watch": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run",
     "test:cov": "cross-env NODE_ENV=test COVERAGE=true karma start --single-run",
-    "prepublish": "npm run lint && npm run clean && npm run build",
-    "dev-docs": "dumi dev",
-    "build-docs": "dumi build"
+    "prepublish": "npm run lint && npm run clean && npm run build:lib"
   },
   "repository": {
     "type": "git",
@@ -40,6 +42,7 @@
     "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "concurrently": "^5.3.0",
     "cross-env": "^7.0.3",
     "dumi": "^1.0.38",
     "eslint": "^7.15.0",
@@ -67,6 +70,7 @@
     "prettier": "^2.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "rebound": "^0.1.0",
     "rimraf": "^3.0.2",
     "simulant": "^0.2.2",
     "typescript": "^4.1.3"
@@ -77,7 +81,6 @@
   },
   "dependencies": {
     "dom-css": "^2.1.0",
-    "prop-types": "^15.7.2",
     "raf": "^3.4.1"
   }
 }

@@ -1,11 +1,14 @@
-import { Component } from 'react';
+import { Component, CSSProperties } from 'react';
 import { Scrollbars } from 'rc-scrollbars';
-import PropTypes from 'prop-types';
 import css from 'dom-css';
 
-class ShadowScrollbars extends Component {
-  constructor(props, ...rest) {
-    super(props, ...rest);
+type Props = {
+  style: CSSProperties;
+};
+
+class ShadowScrollbars extends Component<Props> {
+  constructor(props) {
+    super(props);
     this.state = {
       scrollTop: 0,
       scrollHeight: 0,
@@ -27,11 +30,11 @@ class ShadowScrollbars extends Component {
 
   render() {
     const { style, ...props } = this.props;
-    const containerStyle = {
+    const containerStyle: CSSProperties = {
       ...style,
       position: 'relative',
     };
-    const shadowTopStyle = {
+    const shadowTopStyle: CSSProperties = {
       position: 'absolute',
       top: 0,
       left: 0,
@@ -39,7 +42,7 @@ class ShadowScrollbars extends Component {
       height: 10,
       background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%)',
     };
-    const shadowBottomStyle = {
+    const shadowBottomStyle: CSSProperties = {
       position: 'absolute',
       bottom: 0,
       left: 0,
@@ -56,9 +59,5 @@ class ShadowScrollbars extends Component {
     );
   }
 }
-
-ShadowScrollbars.propTypes = {
-  style: PropTypes.object,
-};
 
 export default ShadowScrollbars;
