@@ -21,7 +21,7 @@ import {
   viewStyleUniversalInitial,
 } from './styles';
 
-interface Props {
+export interface ScrollbarsProps {
   autoHeight: boolean;
   autoHeightMax: number | string;
   autoHeightMin: number | string;
@@ -53,7 +53,7 @@ interface State {
   didMountUniversal: boolean;
 }
 
-export default class Scrollbars extends Component<Props, State> {
+export default class Scrollbars extends Component<ScrollbarsProps, State> {
   container: Element | null = null;
   detectScrollingInterval: any; // Node timeout bug
   dragging: boolean = false;
@@ -91,7 +91,7 @@ export default class Scrollbars extends Component<Props, State> {
     universal: false,
   };
 
-  constructor(props: Props) {
+  constructor(props: ScrollbarsProps) {
     super(props);
 
     this.getScrollLeft = this.getScrollLeft.bind(this);
