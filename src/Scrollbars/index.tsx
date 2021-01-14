@@ -2,7 +2,7 @@ import * as React from 'react';
 import { cloneElement, Component, createElement } from 'react';
 import raf, { cancel as caf } from 'raf';
 import css from 'dom-css';
-import { CustomRenderer, ScrollValues, StyleClasses } from './types';
+import { ScrollValues, ScrollbarsProps } from './types';
 
 import getScrollbarWidth from '../utils/getScrollbarWidth';
 import returnFalse from '../utils/returnFalse';
@@ -21,39 +21,11 @@ import {
   viewStyleUniversalInitial,
 } from './styles';
 
-export interface ScrollbarsProps {
-  autoHeight: boolean;
-  autoHeightMax: number | string;
-  autoHeightMin: number | string;
-  autoHide: boolean;
-  autoHideDuration: number;
-  autoHideTimeout: number;
-  /* class applied to the root element */
-  className?: string;
-  classes: StyleClasses;
-  hideTracksWhenNotNeeded?: boolean;
-  onScroll?: (e: React.UIEvent<HTMLElement>) => void;
-  onScrollFrame?: (values: ScrollValues) => void;
-  onScrollStart?: () => void;
-  onScrollStop?: () => void;
-  onUpdate?: (values: ScrollValues) => void;
-  renderThumbHorizontal: CustomRenderer;
-  renderThumbVertical: CustomRenderer;
-  renderTrackHorizontal: CustomRenderer;
-  renderTrackVertical: CustomRenderer;
-  renderView: CustomRenderer;
-  style?: React.CSSProperties;
-  tagName: string;
-  thumbMinSize: number;
-  thumbSize?: number;
-  universal: boolean;
-}
-
 interface State {
   didMountUniversal: boolean;
 }
 
-export default class Scrollbars extends Component<ScrollbarsProps, State> {
+export class Scrollbars extends Component<ScrollbarsProps, State> {
   container: Element | null = null;
   detectScrollingInterval: any; // Node timeout bug
   dragging: boolean = false;
