@@ -61,6 +61,7 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
     tagName: 'div',
     thumbMinSize: 30,
     universal: false,
+    classes: {},
   };
 
   constructor(props: ScrollbarsProps) {
