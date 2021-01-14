@@ -39,7 +39,6 @@ export const viewStyleUniversalInitial: CSSProperties = {
 
 export const trackStyleDefault: CSSProperties = {
   position: 'absolute',
-  height: 6,
   right: 2,
   bottom: 2,
   borderRadius: 3,
@@ -49,11 +48,13 @@ export const trackStyleDefault: CSSProperties = {
 export const trackHorizontalStyleDefault: CSSProperties = {
   ...trackStyleDefault,
   left: 2,
+  height: 6,
 };
 
 export const trackVerticalStyleDefault: CSSProperties = {
   ...trackStyleDefault,
   top: 2,
+  width: 6,
 };
 
 export const thumbStyleDefault: CSSProperties = {
