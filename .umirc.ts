@@ -2,7 +2,7 @@ import { defineConfig } from 'dumi';
 
 export default defineConfig({
   title: 'rc-scrollbar',
-  mode: 'docs',
+  mode: 'doc',
   logo: '/logo.svg',
   favicon: '/favicon.ico',
   exportStatic: {},

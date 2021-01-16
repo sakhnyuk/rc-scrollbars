@@ -1,6 +1,6 @@
-import { Component, HTMLAttributes } from 'react';
-import { Scrollbars } from 'rc-scrollbars';
-import { ScrollValues } from 'lib/Scrollbars/types';
+import React, { Component, HTMLAttributes } from 'react';
+import { Scrollbars } from '../../src/index';
+import { ScrollValues } from '../../src';
 
 type State = {
   top: number;
@@ -54,6 +54,9 @@ export default class ColoredScrollbars extends Component {
         renderThumbHorizontal={this.renderThumb}
         renderThumbVertical={this.renderThumb}
         onUpdate={this.handleUpdate}
+        classes={{
+          thumbVertical: 'test',
+        }}
         {...this.props}
       />
     );

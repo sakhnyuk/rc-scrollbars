@@ -10,7 +10,7 @@ export interface ScrollbarsProps {
   autoHideTimeout: number;
   /* class applied to the root element */
   className?: string;
-  classes: StyleClasses;
+  classes: Partial<StyleClasses>;
   hideTracksWhenNotNeeded?: boolean;
   onScroll?: (e: React.UIEvent<HTMLElement>) => void;
   onScrollFrame?: (values: ScrollValues) => void;

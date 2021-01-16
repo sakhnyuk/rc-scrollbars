@@ -2,15 +2,17 @@ import * as React from 'react';
 import { cloneElement, Component, createElement } from 'react';
 import raf, { cancel as caf } from 'raf';
 import css from 'dom-css';
+//
 import { ScrollValues, ScrollbarsProps } from './types';
-
-import getScrollbarWidth from '../utils/getScrollbarWidth';
-import returnFalse from '../utils/returnFalse';
-import getInnerWidth from '../utils/getInnerWidth';
-import getInnerHeight from '../utils/getInnerHeight';
+import './styles.css';
 import {
-  containerStyleAutoHeight,
-  containerStyleDefault,
+  getFinalClasses,
+  getScrollbarWidth,
+  returnFalse,
+  getInnerWidth,
+  getInnerHeight,
+} from '../utils';
+import {
   disableSelectStyle,
   disableSelectStyleReset,
   thumbStyleDefault,
@@ -582,9 +584,7 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
     const { didMountUniversal } = this.state;
 
     const containerStyle = {
-      ...containerStyleDefault,
       ...(autoHeight && {
-        ...containerStyleAutoHeight,
         minHeight: autoHeightMin,
         maxHeight: autoHeightMax,
       }),
@@ -640,11 +640,13 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
       }),
     };
 
+    const mergedClasses = getFinalClasses(this.props);
+
     return createElement(
       tagName,
       {
         ...props,
-        className: classes.root,
+        className: mergedClasses.root,
         style: containerStyle,
         ref: (ref) => {
           this.container = ref;
@@ -654,7 +656,7 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
         cloneElement(
           renderView({
             style: viewStyle,
-            className: classes.view,
+            className: mergedClasses.view,
           }),
           {
             key: 'view',
@@ -667,7 +669,7 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
         cloneElement(
           renderTrackHorizontal({
             style: trackHorizontalStyle,
-            className: classes.trackHorizontal,
+            className: mergedClasses.trackHorizontal,
           }),
           {
             key: 'trackHorizontal',
@@ -678,7 +680,7 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
           cloneElement(
             renderThumbHorizontal({
               style: thumbStyleDefault,
-              className: classes.thumbHorizontal,
+              className: mergedClasses.thumbHorizontal,
             }),
             {
               ref: (ref) => {
@@ -690,7 +692,7 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
         cloneElement(
           renderTrackVertical({
             style: trackVerticalStyle,
-            className: classes.trackVertical,
+            className: mergedClasses.trackVertical,
           }),
           {
             key: 'trackVertical',
@@ -700,8 +702,8 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
           },
           cloneElement(
             renderThumbVertical({
-              style: thumbStyleDefault,
-              className: classes.thumbVertical,
+              style: {}, // for backward compatibility
+              className: mergedClasses.thumbVertical,
             }),
             {
               ref: (ref) => {
