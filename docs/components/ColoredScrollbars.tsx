@@ -1,6 +1,5 @@
 import React, { Component, HTMLAttributes } from 'react';
-import { Scrollbars } from '../../src/index';
-import { ScrollValues } from '../../src';
+import { Scrollbars, ScrollValues } from 'rc-scrollbars';
 
 type State = {
   top: number;

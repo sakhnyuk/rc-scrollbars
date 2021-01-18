@@ -1,9 +1,9 @@
 import { ScrollbarsProps, StyleClasses } from '..';
-import classNames from 'classNames';
+import cn from 'classnames';
 
 function getDynamicClasses(props: ScrollbarsProps): Partial<StyleClasses> {
   return {
-    root: classNames({
+    root: cn({
       'rc-scrollbars-heightAuto': props.autoHeight,
     }),
   };
@@ -14,24 +14,16 @@ export default function getFinalClasses(props: ScrollbarsProps): StyleClasses {
   const dynamicClasses = getDynamicClasses(props);
 
   return {
-    root: classNames('rc-scrollbars-container', className, dynamicClasses.root, classes.root),
-    view: classNames('rc-scrollbars-view', dynamicClasses.view, classes.view),
-    trackVertical: classNames(
-      'rc-scrollbars-track',
-      dynamicClasses.trackVertical,
-      classes.trackVertical,
-    ),
-    trackHorizontal: classNames(
+    root: cn('rc-scrollbars-container', className, dynamicClasses.root, classes.root),
+    view: cn('rc-scrollbars-view', dynamicClasses.view, classes.view),
+    trackVertical: cn('rc-scrollbars-track', dynamicClasses.trackVertical, classes.trackVertical),
+    trackHorizontal: cn(
       'rc-scrollbars-track',
       dynamicClasses.trackHorizontal,
       classes.trackHorizontal,
     ),
-    thumbVertical: classNames(
-      'rc-scrollbars-thumb',
-      dynamicClasses.thumbVertical,
-      classes.thumbVertical,
-    ),
-    thumbHorizontal: classNames(
+    thumbVertical: cn('rc-scrollbars-thumb', dynamicClasses.thumbVertical, classes.thumbVertical),
+    thumbHorizontal: cn(
       'rc-scrollbars-thumb',
       dynamicClasses.thumbHorizontal,
       classes.thumbHorizontal,
