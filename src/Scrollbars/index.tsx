@@ -4,7 +4,6 @@ import raf, { cancel as caf } from 'raf';
 import css from 'dom-css';
 //
 import { ScrollValues, ScrollbarsProps } from './types';
-import './styles.css';
 import {
   getFinalClasses,
   getScrollbarWidth,
@@ -13,6 +12,8 @@ import {
   getInnerHeight,
 } from '../utils';
 import {
+  containerStyleAutoHeight,
+  containerStyleDefault,
   disableSelectStyle,
   disableSelectStyleReset,
   thumbStyleDefault,
@@ -63,7 +64,6 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
     tagName: 'div',
     thumbMinSize: 30,
     universal: false,
-    classes: {},
   };
 
   constructor(props: ScrollbarsProps) {
@@ -584,7 +584,9 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
     const { didMountUniversal } = this.state;
 
     const containerStyle = {
+      ...containerStyleDefault,
       ...(autoHeight && {
+        ...containerStyleAutoHeight,
         minHeight: autoHeightMin,
         maxHeight: autoHeightMax,
       }),
@@ -702,7 +704,7 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
           },
           cloneElement(
             renderThumbVertical({
-              style: {}, // for backward compatibility
+              style: thumbStyleDefault,
               className: mergedClasses.thumbVertical,
             }),
             {

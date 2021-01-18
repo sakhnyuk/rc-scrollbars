@@ -1,32 +1,29 @@
 import { ScrollbarsProps, StyleClasses } from '..';
-import cn from 'classnames';
 
-function getDynamicClasses(props: ScrollbarsProps): Partial<StyleClasses> {
-  return {
-    root: cn({
-      'rc-scrollbars-heightAuto': props.autoHeight,
-    }),
-  };
+const defaultClasses: StyleClasses = {
+  root: 'rc-scrollbars-container',
+  view: 'rc-scrollbars-view',
+  trackVertical: 'rc-scrollbars-track rc-scrollbars-track-v',
+  trackHorizontal: 'rc-scrollbars-track rc-scrollbars-track-h',
+  thumbVertical: 'rc-scrollbars-thumb rc-scrollbars-thumb-v',
+  thumbHorizontal: 'rc-scrollbars-thumb rc-scrollbars-thumb-h',
+};
+
+function mergeClasses(defaultClasses, providedClasses) {
+  return providedClasses
+    ? Object.keys(defaultClasses).reduce((result, classKey) => {
+        result[classKey] = `${defaultClasses[classKey]} ${providedClasses[classKey]}`;
+        return result;
+      }, {})
+    : defaultClasses;
 }
 
 export default function getFinalClasses(props: ScrollbarsProps): StyleClasses {
   const { className, classes } = props;
-  const dynamicClasses = getDynamicClasses(props);
+  const { root: defaultRootClass, ...rest } = defaultClasses;
 
   return {
-    root: cn('rc-scrollbars-container', className, dynamicClasses.root, classes.root),
-    view: cn('rc-scrollbars-view', dynamicClasses.view, classes.view),
-    trackVertical: cn('rc-scrollbars-track', dynamicClasses.trackVertical, classes.trackVertical),
-    trackHorizontal: cn(
-      'rc-scrollbars-track',
-      dynamicClasses.trackHorizontal,
-      classes.trackHorizontal,
-    ),
-    thumbVertical: cn('rc-scrollbars-thumb', dynamicClasses.thumbVertical, classes.thumbVertical),
-    thumbHorizontal: cn(
-      'rc-scrollbars-thumb',
-      dynamicClasses.thumbHorizontal,
-      classes.thumbHorizontal,
-    ),
+    root: [defaultRootClass, className, classes?.root].filter(Boolean).join(' '),
+    ...mergeClasses(rest, props.classes),
   };
 }

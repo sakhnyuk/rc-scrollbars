@@ -53,9 +53,6 @@ export default class ColoredScrollbars extends Component {
         renderThumbHorizontal={this.renderThumb}
         renderThumbVertical={this.renderThumb}
         onUpdate={this.handleUpdate}
-        classes={{
-          thumbVertical: 'test',
-        }}
         {...this.props}
       />
     );
