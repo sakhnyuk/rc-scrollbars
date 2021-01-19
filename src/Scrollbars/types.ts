@@ -11,6 +11,7 @@ export interface ScrollbarsProps {
   /* class applied to the root element */
   className?: string;
   classes?: Partial<StyleClasses>;
+  disableDefaultStyles: boolean;
   hideTracksWhenNotNeeded?: boolean;
   onScroll?: (e: React.UIEvent<HTMLElement>) => void;
   onScrollFrame?: (values: ScrollValues) => void;
@@ -48,6 +49,18 @@ export interface StyleClasses {
   trackVertical: string;
   thumbVertical: string;
 }
+
+export type StyleKeys =
+  'containerStyleDefault'
+  | 'containerStyleAutoHeight'
+  | 'viewStyleDefault'
+  | 'viewStyleAutoHeight'
+  | 'viewStyleUniversalInitial'
+  | 'trackHorizontalStyleDefault'
+  | 'trackVerticalStyleDefault'
+  | 'thumbStyleDefault'
+  | 'disableSelectStyle'
+  | 'disableSelectStyleReset';
 
 export interface CustomRenderProps extends HTMLAttributes<HTMLDivElement> {
   style: CSSProperties;

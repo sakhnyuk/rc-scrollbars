@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { cloneElement, Component, createElement } from 'react';
+import { cloneElement, Component, createElement, CSSProperties } from 'react';
 import raf, { cancel as caf } from 'raf';
 import css from 'dom-css';
 //
-import { ScrollValues, ScrollbarsProps } from './types';
+import { ScrollValues, ScrollbarsProps, StyleKeys } from './types';
 import {
   getFinalClasses,
   getScrollbarWidth,
@@ -11,18 +11,7 @@ import {
   getInnerWidth,
   getInnerHeight,
 } from '../utils';
-import {
-  containerStyleAutoHeight,
-  containerStyleDefault,
-  disableSelectStyle,
-  disableSelectStyleReset,
-  thumbStyleDefault,
-  trackHorizontalStyleDefault,
-  trackVerticalStyleDefault,
-  viewStyleAutoHeight,
-  viewStyleDefault,
-  viewStyleUniversalInitial,
-} from './styles';
+import { createStyles } from './styles';
 
 interface State {
   didMountUniversal: boolean;
@@ -39,6 +28,7 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
   prevPageY?: number;
   requestFrame?: number;
   scrolling: boolean = false;
+  styles: Record<StyleKeys, CSSProperties>;
   thumbHorizontal?: HTMLDivElement;
   thumbVertical?: HTMLDivElement;
   trackHorizontal?: HTMLDivElement;
@@ -55,6 +45,7 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
     autoHide: false,
     autoHideDuration: 200,
     autoHideTimeout: 1000,
+    disableDefaultStyles: false,
     hideTracksWhenNotNeeded: false,
     renderThumbHorizontal: (props) => <div {...props} />,
     renderThumbVertical: (props) => <div {...props} />,
@@ -68,6 +59,8 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
 
   constructor(props: ScrollbarsProps) {
     super(props);
+
+    this.styles = createStyles(this.props.disableDefaultStyles);
 
     this.getScrollLeft = this.getScrollLeft.bind(this);
     this.getScrollTop = this.getScrollTop.bind(this);
@@ -386,14 +379,14 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
   }
 
   setupDragging() {
-    css(document.body, disableSelectStyle);
+    css(document.body, this.styles.disableSelectStyle);
     document.addEventListener('mousemove', this.handleDrag);
     document.addEventListener('mouseup', this.handleDragEnd);
     document.onselectstart = returnFalse;
   }
 
   teardownDragging() {
-    css(document.body, disableSelectStyleReset);
+    css(document.body, this.styles.disableSelectStyleReset);
     document.removeEventListener('mousemove', this.handleDrag);
     document.removeEventListener('mouseup', this.handleDragEnd);
     document.onselectstart = null;
@@ -582,6 +575,17 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
     /* eslint-enable no-unused-vars */
 
     const { didMountUniversal } = this.state;
+
+    const {
+      containerStyleAutoHeight,
+      containerStyleDefault,
+      thumbStyleDefault,
+      trackHorizontalStyleDefault,
+      trackVerticalStyleDefault,
+      viewStyleAutoHeight,
+      viewStyleDefault,
+      viewStyleUniversalInitial,
+    } = this.styles;
 
     const containerStyle = {
       ...containerStyleDefault,

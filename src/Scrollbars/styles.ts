@@ -1,75 +1,79 @@
 import { CSSProperties } from 'react';
+import { StyleKeys } from './types';
 
-export const containerStyleDefault: CSSProperties = {
-  position: 'relative',
-  overflow: 'hidden',
-  width: '100%',
-  height: '100%',
-};
+export function createStyles(disableDefaultStyles: boolean): Record<StyleKeys, CSSProperties> {
+  const trackStyleDefault: CSSProperties = {
+    position: 'absolute',
+    right: 2,
+    bottom: 2,
+    zIndex: 100,
+    ...(!disableDefaultStyles && { borderRadius: 3 }),
+  };
 
-// Overrides containerStyleDefault properties
-export const containerStyleAutoHeight: CSSProperties = {
-  height: 'auto',
-};
+  return {
+    containerStyleDefault: {
+      position: 'relative',
+      overflow: 'hidden',
+      width: '100%',
+      height: '100%',
+    },
 
-export const viewStyleDefault: CSSProperties = {
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  overflow: 'scroll',
-  WebkitOverflowScrolling: 'touch',
-};
+    containerStyleAutoHeight: {
+      height: 'auto',
+    },
 
-// Overrides viewStyleDefault properties
-export const viewStyleAutoHeight: CSSProperties = {
-  position: 'relative',
-  top: undefined,
-  left: undefined,
-  right: undefined,
-  bottom: undefined,
-};
+    viewStyleDefault: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      overflow: 'scroll',
+      WebkitOverflowScrolling: 'touch',
+    },
 
-export const viewStyleUniversalInitial: CSSProperties = {
-  overflow: 'hidden',
-  marginRight: 0,
-  marginBottom: 0,
-};
+    // Overrides viewStyleDefault properties
+    viewStyleAutoHeight: {
+      position: 'relative',
+      top: undefined,
+      left: undefined,
+      right: undefined,
+      bottom: undefined,
+    },
 
-export const trackStyleDefault: CSSProperties = {
-  position: 'absolute',
-  right: 2,
-  bottom: 2,
-  borderRadius: 3,
-  zIndex: 100,
-};
+    viewStyleUniversalInitial: {
+      overflow: 'hidden',
+      marginRight: 0,
+      marginBottom: 0,
+    },
 
-export const trackHorizontalStyleDefault: CSSProperties = {
-  ...trackStyleDefault,
-  left: 2,
-  height: 6,
-};
+    trackHorizontalStyleDefault: {
+      ...trackStyleDefault,
+      left: 2,
+      height: 6,
+    },
 
-export const trackVerticalStyleDefault: CSSProperties = {
-  ...trackStyleDefault,
-  top: 2,
-  width: 6,
-};
+    trackVerticalStyleDefault: {
+      ...trackStyleDefault,
+      top: 2,
+      width: 6,
+    },
 
-export const thumbStyleDefault: CSSProperties = {
-  position: 'relative',
-  display: 'block',
-  height: '100%',
-  cursor: 'pointer',
-  borderRadius: 'inherit',
-  backgroundColor: 'rgba(0,0,0,.2)',
-};
+    thumbStyleDefault: {
+      position: 'relative',
+      display: 'block',
+      height: '100%',
+      cursor: 'pointer',
+      borderRadius: 'inherit',
+      ...(!disableDefaultStyles && { backgroundColor: 'rgba(0,0,0,.2)' }),
+    },
 
-export const disableSelectStyle: CSSProperties = {
-  userSelect: 'none',
-};
+    disableSelectStyle: {
+      userSelect: 'none',
+    },
 
-export const disableSelectStyleReset: CSSProperties = {
-  userSelect: 'auto',
-};
+    disableSelectStyleReset: {
+      userSelect: 'auto',
+    },
+  };
+}
