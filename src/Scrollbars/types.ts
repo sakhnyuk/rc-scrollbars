@@ -51,7 +51,7 @@ export interface StyleClasses {
 }
 
 export type StyleKeys =
-  'containerStyleDefault'
+  | 'containerStyleDefault'
   | 'containerStyleAutoHeight'
   | 'viewStyleDefault'
   | 'viewStyleAutoHeight'
