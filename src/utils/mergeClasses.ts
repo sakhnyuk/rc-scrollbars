@@ -12,7 +12,7 @@ const defaultClasses: StyleClasses = {
 function mergeClasses(defaultClasses, providedClasses) {
   return providedClasses
     ? Object.keys(defaultClasses).reduce((result, classKey) => {
-        result[classKey] = `${defaultClasses[classKey]} ${providedClasses[classKey]}`;
+        result[classKey] = `${defaultClasses[classKey]} ${providedClasses[classKey] || ''}`;
         return result;
       }, {})
     : defaultClasses;
