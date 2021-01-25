@@ -14,6 +14,8 @@ order: 4
 | autoHide | Enable auto-hide mode. When `true` tracks will hide automatically and are only visible while scrolling. | `boolean` | `false` |
 | autoHideDuration | Duration for hide animation in ms. | `Number` | 200 |
 | autoHideTimeout | Hide delay in ms. | `Number` | 1000 |
+| classes | extra custom className/s to any of the subcomponents | <code>Partial<Record<'root' &#124; 'view' &#124; 'trackVertical' &#124; 'trackHorizontal' &#124; 'thumbVertical' &#124; 'thumbHorizontal', string></code> | `{}`
+| className | className for the root component | `string` | `undefined`
 | hideTracksWhenNotNeeded | Hide tracks (`visibility: hidden`) when content does not overflow container. | `Boolean` | `false` |
 | onScroll | Event handler | `(e: React.UIEvent<HTMLElement>) => void` | `undefined` |
 | onScrollFrame | Runs inside the animation frame. Type of `ScrollValues` you can check below | `(values: ScrollValues) => void` | `undefined` |

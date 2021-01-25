@@ -67,6 +67,15 @@ class CustomScrollbars extends Component {
 }
 ```
 
+For convenience, some 'marker' classes are provided for each of the subcomponents: 
+
+  `root`: 'rc-scrollbars-container'  
+  `view`: 'rc-scrollbars-view'  
+  `trackVertical`: 'rc-scrollbars-track rc-scrollbars-track-v'  
+  `trackHorizontal`: 'rc-scrollbars-track rc-scrollbars-track-h'  
+  `thumbVertical`: 'rc-scrollbars-thumb rc-scrollbars-thumb-v'  
+  `thumbHorizontal`: 'rc-scrollbars-thumb rc-scrollbars-thumb-h'  
+
 ## Respond to scroll events
 
 If you want to change the appearance in respond to the scrolling position, you could do that like:
