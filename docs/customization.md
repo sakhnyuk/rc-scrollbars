@@ -75,6 +75,8 @@ For convenience, some 'marker' classes are provided for each of the subcomponent
   `trackHorizontal`: 'rc-scrollbars-track rc-scrollbars-track-h'  
   `thumbVertical`: 'rc-scrollbars-thumb rc-scrollbars-thumb-v'  
   `thumbHorizontal`: 'rc-scrollbars-thumb rc-scrollbars-thumb-h'  
+  
+  There's very little 'beautifying' styles applied by default, however if you'd like to change the `background-color` of the **thumbs** or `border-radius` of the **tracks** you can easily disable their default styling by passing a single prop `disableDefaultStyles`.
 
 ## Respond to scroll events
 
