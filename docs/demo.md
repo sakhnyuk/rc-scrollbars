@@ -11,6 +11,7 @@ order: 5
 /**
  * title: Default vertical content
  * desc: Default usage of rc-scrollbars with vertical scroll
+ * hideActions: ['CSB']
  */
 import React from 'react';
 import { Scrollbars } from 'rc-scrollbars';
@@ -27,6 +28,7 @@ export default () => (
 /**
  * title: Default hozintal content
  * desc: Default usage of rc-scrollbars with horizontal and vertical scroll
+ * hideActions: ['CSB']
  */
 import React from 'react';
 import { Scrollbars } from 'rc-scrollbars';
@@ -44,6 +46,9 @@ export default () => (
 ## Auto-hide
 
 ```jsx
+/**
+ * hideActions: ['CSB']
+ */
 import React from 'react';
 import { Scrollbars } from 'rc-scrollbars';
 import { Lorem } from './components/Lorem';
@@ -67,6 +72,7 @@ export default class App extends React.Component {
 /**
  * title: Colored Scrollbar
  * desc: Example type customization of scrollbar and view
+ * hideActions: ['CSB']
  */
 import React from 'react';
 import ColoredScrollbars from './components/ColoredScrollbars';
@@ -84,6 +90,7 @@ export default () => (
 ```jsx
 /**
  * title: Shadow view
+ * hideActions: ['CSB']
  */
 import React from 'react';
 import { Scrollbars } from 'rc-scrollbars';
@@ -106,6 +113,7 @@ export default class App extends React.Component {
 ```tsx
 /**
  * title: Styled scrollbar
+ * hideActions: ['CSB']
  */
 import React from 'react';
 import { Scrollbars } from 'rc-scrollbars';
@@ -153,6 +161,7 @@ export default class App extends React.Component {
 ```jsx
 /**
  * title: Spring Scrollbar
+ * hideActions: ['CSB']
  */
 import React from 'react';
 import SpringScrollbarsExample from './components/SpringScrollbars/SpringScrollbarsExample';

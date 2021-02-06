@@ -9,8 +9,8 @@ React scrollbars component.
 
 `rc-scrollbars` is rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scrollbars" target="_blank">react-custom-scrollbars</a>
 
-[![npm](https://img.shields.io/badge/npm-rc--scrollbars-brightgreen.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars)
-[![npm version](https://img.shields.io/npm/v/rc-scrollbars.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars)
+[![npm](https://img.shields.io/badge/npm-rc--scrollbars-brightgreen.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars) 
+[![npm version](https://img.shields.io/npm/v/rc-scrollbars.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars) 
 [![npm downloads](https://img.shields.io/npm/dm/rc-scrollbars.svg?style=flat-square)](https://www.npmjs.com/package/rc-scrollbars)
 
 * frictionless native browser scrolling
@@ -24,6 +24,22 @@ React scrollbars component.
 * well tested, 100% code coverage
 
 #### **[Demos](/demo) · [API](/api)  ·  [GitHub](https://github.com/sakhnyuk/rc-scrollbars)**
+
+```jsx
+/**
+ * title: Basic DEMO of scrollbar
+ * hideActions: ['CSB', 'EXTERNAL']
+ */
+import React from 'react';
+import { Scrollbars } from 'rc-scrollbars';
+import { Lorem } from './components/Lorem';
+
+export default () => (
+  <Scrollbars style={{ maxWidth: 600, height: 300 }}>
+    <Lorem />
+  </Scrollbars>
+);
+```
 
 ## Installation
 ```bash

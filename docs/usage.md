@@ -34,7 +34,7 @@ Also don't forget to set the `viewport` meta tag, if you want to **support mobil
 
 There are several events you can listen to:
 
-```javascript
+```jsx | pure
 import { Scrollbars } from 'rc-scrollbars';
 
 class App extends Component {
@@ -65,7 +65,7 @@ You can activate auto-hide by setting the `autoHide` property.
 
 Check out [demo](/demo#auto-hide)
 
-```javascript
+```jsx | pure
 import { Scrollbars } from 'rc-scrollbars';
 
 class App extends Component {
@@ -90,7 +90,7 @@ class App extends Component {
 
 You can activate auto-height by setting the `autoHeight` property.
 
-```jsx pure
+```jsx | pure
 import React from 'react';
 import { Scrollbars } from 'rc-scrollbars';
 import { Lorem } from './components/Lorem';
@@ -108,17 +108,14 @@ export default () => {
 
 If your app runs on both client and server, activate the `universal` mode. This will ensure that the initial markup on client and server are the same:
 
-```javascript
+```jsx | pure
 import { Scrollbars } from 'rc-scrollbars';
 
-class App extends Component {
-  render() {
-    return (
-      // This will activate universal mode
-      <Scrollbars universal>
-        <p>Some great content...</p>
-      </Scrollbars>
-    );
-  }
-}
+export const Component = () => {
+  return (
+    <Scrollbars universal>
+      <p>Some great content...</p>
+    </Scrollbars>
+  );
+};
 ```

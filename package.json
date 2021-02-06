@@ -18,7 +18,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sakhnyuk/rc-scrollbars.git"
+    "url": "https://github.com/sakhnyuk/rc-scrollbars.git",
+    "branch": "main"
   },
   "keywords": [
     "scroll",
@@ -43,7 +44,7 @@
     "@typescript-eslint/parser": "^4.9.1",
     "concurrently": "^5.3.0",
     "cross-env": "^7.0.3",
-    "dumi": "^1.0.38",
+    "dumi": "^1.1.4",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-config-react-app": "^6.0.0",
