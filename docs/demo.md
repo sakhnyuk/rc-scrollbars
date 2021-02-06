@@ -120,24 +120,24 @@ import { Scrollbars } from 'rc-scrollbars';
 import { Lorem } from './components/Lorem';
 
 export default class App extends React.Component {
-  thumbVertical({style, ...props}: HTMLAttributes<HTMLDivElement>) {
+  thumbVertical({ style, ...props }: HTMLAttributes<HTMLDivElement>) {
     const finalStyle = {
       ...style,
       cursor: 'pointer',
       backgroundColor: 'rgba(0,255,0,.6)',
     };
 
-    return <div style={finalStyle}  {...props} />;
+    return <div style={finalStyle} {...props} />;
   }
 
-  thumbHorizontal({style, ...props}: HTMLAttributes<HTMLDivElement>) {
+  thumbHorizontal({ style, ...props }: HTMLAttributes<HTMLDivElement>) {
     const finalStyle = {
       ...style,
       cursor: 'pointer',
       backgroundColor: 'rgba(255,0,0,.6)',
     };
 
-    return <div style={finalStyle}  {...props} />;
+    return <div style={finalStyle} {...props} />;
   }
 
   render() {
