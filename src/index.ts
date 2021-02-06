@@ -1,5 +1,6 @@
-import Scrollbars from './Scrollbars';
+import { Scrollbars } from './Scrollbars';
+
+export { ScrollValues, StyleClasses, ScrollbarsProps } from './Scrollbars/types';
+export { Scrollbars };
 
 export default Scrollbars;
-export { Scrollbars };
-export { ScrollValues } from './Scrollbars/types';

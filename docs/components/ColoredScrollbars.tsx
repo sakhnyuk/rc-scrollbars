@@ -1,6 +1,5 @@
-import { Component, HTMLAttributes } from 'react';
-import { Scrollbars } from 'rc-scrollbars';
-import { ScrollValues } from 'lib/Scrollbars/types';
+import React, { Component, HTMLAttributes } from 'react';
+import { Scrollbars, ScrollValues } from 'rc-scrollbars';
 
 type State = {
   top: number;

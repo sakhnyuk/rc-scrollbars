@@ -1,6 +1,6 @@
 {
   "name": "rc-scrollbars",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "React scrollbars component",
   "main": "lib/index.js",
   "scripts": {
@@ -10,7 +10,6 @@
     "dev": "concurrently -k -p \"[{name}]\" -n \"LIB,DOCS\" -c \"bgMagenta.bold,bgGreen.bold\" \"npm run dev:lib\" \"npm run dev:docs\"",
     "build:lib": "tsc",
     "build:docs": "dumi build",
-    "build-docs": "dumi build",
     "lint": "eslint src test",
     "test": "cross-env NODE_ENV=test karma start",
     "test:watch": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run",
@@ -19,7 +18,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sakhnyuk/rc-scrollbars.git"
+    "url": "https://github.com/sakhnyuk/rc-scrollbars.git",
+    "branch": "main"
   },
   "keywords": [
     "scroll",
@@ -44,7 +44,7 @@
     "@typescript-eslint/parser": "^4.9.1",
     "concurrently": "^5.3.0",
     "cross-env": "^7.0.3",
-    "dumi": "^1.0.38",
+    "dumi": "^1.1.4",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-config-react-app": "^6.0.0",

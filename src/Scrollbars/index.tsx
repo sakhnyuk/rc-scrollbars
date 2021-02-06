@@ -1,104 +1,66 @@
 import * as React from 'react';
-import { Component, createElement, cloneElement, HTMLAttributes } from 'react';
+import { cloneElement, Component, createElement, CSSProperties } from 'react';
 import raf, { cancel as caf } from 'raf';
 import css from 'dom-css';
-import { ScrollValues } from './types';
-
-import getScrollbarWidth from '../utils/getScrollbarWidth';
-import returnFalse from '../utils/returnFalse';
-import getInnerWidth from '../utils/getInnerWidth';
-import getInnerHeight from '../utils/getInnerHeight';
+//
+import { ScrollValues, ScrollbarsProps, StyleKeys } from './types';
 import {
-  containerStyleDefault,
-  containerStyleAutoHeight,
-  viewStyleDefault,
-  viewStyleAutoHeight,
-  viewStyleUniversalInitial,
-  trackHorizontalStyleDefault,
-  trackVerticalStyleDefault,
-  thumbHorizontalStyleDefault,
-  thumbVerticalStyleDefault,
-  disableSelectStyle,
-  disableSelectStyleReset,
-} from './styles';
-
-import {
-  renderViewDefault,
-  renderTrackHorizontalDefault,
-  renderTrackVerticalDefault,
-  renderThumbHorizontalDefault,
-  renderThumbVerticalDefault,
-} from './defaultRenderElements';
-
-interface Props {
-  onScroll?: (e: React.UIEvent<HTMLElement>) => void;
-  onScrollFrame?: (values: ScrollValues) => void;
-  onScrollStart?: () => void;
-  onScrollStop?: () => void;
-  onUpdate?: (values: ScrollValues) => void;
-  renderView: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
-  renderTrackHorizontal: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
-  renderTrackVertical: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
-  renderThumbHorizontal: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
-  renderThumbVertical: (props: HTMLAttributes<HTMLDivElement>) => JSX.Element;
-  tagName: string;
-  thumbSize?: number;
-  thumbMinSize: number;
-  hideTracksWhenNotNeeded?: boolean;
-  autoHide: boolean;
-  autoHideTimeout: number;
-  autoHideDuration: number;
-  autoHeight: boolean;
-  autoHeightMin: number | string;
-  autoHeightMax: number | string;
-  universal: boolean;
-  style?: React.CSSProperties;
-}
+  getFinalClasses,
+  getScrollbarWidth,
+  returnFalse,
+  getInnerWidth,
+  getInnerHeight,
+} from '../utils';
+import { createStyles } from './styles';
 
 interface State {
   didMountUniversal: boolean;
 }
 
-export default class Scrollbars extends Component<Props, State> {
-  requestFrame?: number;
-  hideTracksTimeout: any; // Node timeout bug
+export class Scrollbars extends Component<ScrollbarsProps, State> {
+  container: Element | null = null;
   detectScrollingInterval: any; // Node timeout bug
-  view?: HTMLElement;
-  trackHorizontal?: HTMLDivElement;
-  thumbHorizontal?: HTMLDivElement;
-  trackVertical?: HTMLDivElement;
-  thumbVertical?: HTMLDivElement;
-  viewScrollLeft?: number;
-  viewScrollTop?: number;
-  prevPageX?: number;
-  prevPageY?: number;
   dragging: boolean = false;
-  trackMouseOver: boolean = false;
-  scrolling: boolean = false;
+  hideTracksTimeout: any; // Node timeout bug
   lastViewScrollLeft?: number;
   lastViewScrollTop?: number;
-  container: Element | null = null;
+  prevPageX?: number;
+  prevPageY?: number;
+  requestFrame?: number;
+  scrolling: boolean = false;
+  styles: Record<StyleKeys, CSSProperties>;
+  thumbHorizontal?: HTMLDivElement;
+  thumbVertical?: HTMLDivElement;
+  trackHorizontal?: HTMLDivElement;
+  trackMouseOver: boolean = false;
+  trackVertical?: HTMLDivElement;
+  view?: HTMLElement;
+  viewScrollLeft?: number;
+  viewScrollTop?: number;
 
   static defaultProps = {
-    renderView: renderViewDefault,
-    renderTrackHorizontal: renderTrackHorizontalDefault,
-    renderTrackVertical: renderTrackVerticalDefault,
-    renderThumbHorizontal: renderThumbHorizontalDefault,
-    renderThumbVertical: renderThumbVerticalDefault,
+    autoHeight: false,
+    autoHeightMax: 200,
+    autoHeightMin: 0,
+    autoHide: false,
+    autoHideDuration: 200,
+    autoHideTimeout: 1000,
+    disableDefaultStyles: false,
+    hideTracksWhenNotNeeded: false,
+    renderThumbHorizontal: (props) => <div {...props} />,
+    renderThumbVertical: (props) => <div {...props} />,
+    renderTrackHorizontal: (props) => <div {...props} />,
+    renderTrackVertical: (props) => <div {...props} />,
+    renderView: (props) => <div {...props} />,
     tagName: 'div',
     thumbMinSize: 30,
-    hideTracksWhenNotNeeded: false,
-    autoHide: false,
-    autoHideTimeout: 1000,
-    autoHideDuration: 200,
-    autoHeight: false,
-    autoHeightMin: 0,
-    autoHeightMax: 200,
     universal: false,
   };
 
-  constructor(props: Props) {
+  constructor(props: ScrollbarsProps) {
     super(props);
+
+    this.styles = createStyles(this.props.disableDefaultStyles);
 
     this.getScrollLeft = this.getScrollLeft.bind(this);
     this.getScrollTop = this.getScrollTop.bind(this);
@@ -417,14 +379,14 @@ export default class Scrollbars extends Component<Props, State> {
   }
 
   setupDragging() {
-    css(document.body, disableSelectStyle);
+    css(document.body, this.styles.disableSelectStyle);
     document.addEventListener('mousemove', this.handleDrag);
     document.addEventListener('mouseup', this.handleDragEnd);
     document.onselectstart = returnFalse;
   }
 
   teardownDragging() {
-    css(document.body, disableSelectStyleReset);
+    css(document.body, this.styles.disableSelectStyleReset);
     document.removeEventListener('mousemove', this.handleDrag);
     document.removeEventListener('mouseup', this.handleDragEnd);
     document.onselectstart = null;
@@ -584,34 +546,46 @@ export default class Scrollbars extends Component<Props, State> {
     const scrollbarWidth = getScrollbarWidth();
     /* eslint-disable no-unused-vars */
     const {
+      autoHeight,
+      autoHeightMax,
+      autoHeightMin,
+      autoHide,
+      autoHideDuration,
+      autoHideTimeout,
+      children,
+      classes,
+      hideTracksWhenNotNeeded,
       onScroll,
       onScrollFrame,
       onScrollStart,
       onScrollStop,
       onUpdate,
-      renderView,
-      renderTrackHorizontal,
-      renderTrackVertical,
       renderThumbHorizontal,
       renderThumbVertical,
-      tagName,
-      hideTracksWhenNotNeeded,
-      autoHide,
-      autoHideTimeout,
-      autoHideDuration,
-      thumbSize,
-      thumbMinSize,
-      universal,
-      autoHeight,
-      autoHeightMin,
-      autoHeightMax,
+      renderTrackHorizontal,
+      renderTrackVertical,
+      renderView,
       style,
-      children,
+      tagName,
+      thumbMinSize,
+      thumbSize,
+      universal,
       ...props
     } = this.props;
     /* eslint-enable no-unused-vars */
 
     const { didMountUniversal } = this.state;
+
+    const {
+      containerStyleAutoHeight,
+      containerStyleDefault,
+      thumbStyleDefault,
+      trackHorizontalStyleDefault,
+      trackVerticalStyleDefault,
+      viewStyleAutoHeight,
+      viewStyleDefault,
+      viewStyleUniversalInitial,
+    } = this.styles;
 
     const containerStyle = {
       ...containerStyleDefault,
@@ -672,10 +646,13 @@ export default class Scrollbars extends Component<Props, State> {
       }),
     };
 
+    const mergedClasses = getFinalClasses(this.props);
+
     return createElement(
       tagName,
       {
         ...props,
+        className: mergedClasses.root,
         style: containerStyle,
         ref: (ref) => {
           this.container = ref;
@@ -683,7 +660,10 @@ export default class Scrollbars extends Component<Props, State> {
       },
       [
         cloneElement(
-          renderView({ style: viewStyle }),
+          renderView({
+            style: viewStyle,
+            className: mergedClasses.view,
+          }),
           {
             key: 'view',
             ref: (ref) => {
@@ -693,32 +673,50 @@ export default class Scrollbars extends Component<Props, State> {
           children,
         ),
         cloneElement(
-          renderTrackHorizontal({ style: trackHorizontalStyle }),
+          renderTrackHorizontal({
+            style: trackHorizontalStyle,
+            className: mergedClasses.trackHorizontal,
+          }),
           {
             key: 'trackHorizontal',
             ref: (ref) => {
               this.trackHorizontal = ref;
             },
           },
-          cloneElement(renderThumbHorizontal({ style: thumbHorizontalStyleDefault }), {
-            ref: (ref) => {
-              this.thumbHorizontal = ref;
+          cloneElement(
+            renderThumbHorizontal({
+              style: thumbStyleDefault,
+              className: mergedClasses.thumbHorizontal,
+            }),
+            {
+              ref: (ref) => {
+                this.thumbHorizontal = ref;
+              },
             },
-          }),
+          ),
         ),
         cloneElement(
-          renderTrackVertical({ style: trackVerticalStyle }),
+          renderTrackVertical({
+            style: trackVerticalStyle,
+            className: mergedClasses.trackVertical,
+          }),
           {
             key: 'trackVertical',
             ref: (ref) => {
               this.trackVertical = ref;
             },
           },
-          cloneElement(renderThumbVertical({ style: thumbVerticalStyleDefault }), {
-            ref: (ref) => {
-              this.thumbVertical = ref;
+          cloneElement(
+            renderThumbVertical({
+              style: thumbStyleDefault,
+              className: mergedClasses.thumbVertical,
+            }),
+            {
+              ref: (ref) => {
+                this.thumbVertical = ref;
+              },
             },
-          }),
+          ),
         ),
       ],
     );
