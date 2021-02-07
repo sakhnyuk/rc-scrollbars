@@ -570,6 +570,7 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
       thumbMinSize,
       thumbSize,
       universal,
+      disableDefaultStyles,
       ...props
     } = this.props;
     /* eslint-enable no-unused-vars */
