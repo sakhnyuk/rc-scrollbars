@@ -15,6 +15,7 @@ import { createStyles } from './styles';
 
 interface State {
   didMountUniversal: boolean;
+  scrollbarWidth: number;
 }
 
 export class Scrollbars extends Component<ScrollbarsProps, State> {
@@ -94,6 +95,7 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
 
     this.state = {
       didMountUniversal: false,
+      scrollbarWidth: getScrollbarWidth(),
     };
   }
 
@@ -260,7 +262,8 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
 
     const { view, trackHorizontal, trackVertical, thumbHorizontal, thumbVertical } = this;
     view.addEventListener('scroll', this.handleScroll);
-    if (!getScrollbarWidth()) return;
+
+    if (!this.state.scrollbarWidth) return;
 
     trackHorizontal.addEventListener('mouseenter', this.handleTrackMouseEnter);
     trackHorizontal.addEventListener('mouseleave', this.handleTrackMouseLeave);
@@ -286,7 +289,9 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
       return;
     const { view, trackHorizontal, trackVertical, thumbHorizontal, thumbVertical } = this;
     view.removeEventListener('scroll', this.handleScroll);
-    if (!getScrollbarWidth()) return;
+
+    if (!this.state.scrollbarWidth) return;
+
     trackHorizontal.removeEventListener('mouseenter', this.handleTrackMouseEnter);
     trackHorizontal.removeEventListener('mouseleave', this.handleTrackMouseLeave);
     trackHorizontal.removeEventListener('mousedown', this.handleHorizontalTrackMouseDown);
@@ -504,7 +509,14 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
   _update(callback) {
     const { onUpdate, hideTracksWhenNotNeeded } = this.props;
     const values = this.getValues();
-    if (getScrollbarWidth()) {
+
+    const freshScrollbarWidth = getScrollbarWidth();
+
+    if (this.state.scrollbarWidth !== freshScrollbarWidth) {
+      this.setState({ scrollbarWidth: freshScrollbarWidth });
+    }
+
+    if (this.state.scrollbarWidth) {
       const { scrollLeft, clientWidth, scrollWidth } = values;
       const trackHorizontalWidth = getInnerWidth(this.trackHorizontal);
 
@@ -543,7 +555,8 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
   }
 
   render() {
-    const scrollbarWidth = getScrollbarWidth();
+    const { scrollbarWidth, didMountUniversal } = this.state;
+
     /* eslint-disable no-unused-vars */
     const {
       autoHeight,
@@ -570,11 +583,10 @@ export class Scrollbars extends Component<ScrollbarsProps, State> {
       thumbMinSize,
       thumbSize,
       universal,
+      disableDefaultStyles,
       ...props
     } = this.props;
     /* eslint-enable no-unused-vars */
-
-    const { didMountUniversal } = this.state;
 
     const {
       containerStyleAutoHeight,
