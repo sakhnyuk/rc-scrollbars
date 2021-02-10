@@ -1,13 +1,14 @@
 import css from 'dom-css';
 
 let scrollbarWidth: number | undefined = undefined;
-let pxRatio: number = window.screen.availWidth / document.documentElement.clientWidth;
+let pxRatio: number = getPxRatio();
 
 export default function getScrollbarWidth() {
   /**
    * Check zoom ratio. If it was changed, then it would update scrollbatWidth
    */
-  const newPxRatio = window.screen.availWidth / document.documentElement.clientWidth;
+  const newPxRatio = getPxRatio();
+
   if (pxRatio !== newPxRatio) {
     scrollbarWidth = getScrollbarWidthFromDom();
   }
@@ -41,4 +42,9 @@ function getScrollbarWidthFromDom() {
   document.body.removeChild(div);
 
   return result;
+}
+
+function getPxRatio() {
+  if (typeof window === 'undefined') return 1;
+  return window.screen.availWidth / document.documentElement.clientWidth;
 }
