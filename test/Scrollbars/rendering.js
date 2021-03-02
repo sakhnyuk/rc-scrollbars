@@ -27,6 +27,19 @@ export default function createTests(scrollbarWidth) {
         );
       });
 
+      it('takes id', (done) => {
+        render(
+          <Scrollbars id="foo">
+            <div style={{ width: 200, height: 200 }} />
+          </Scrollbars>,
+          node,
+          function callback() {
+            expect(findDOMNode(this).id).toEqual('foo');
+            done();
+          },
+        );
+      });
+
       it('takes styles', (done) => {
         render(
           <Scrollbars style={{ width: 100, height: 100 }}>

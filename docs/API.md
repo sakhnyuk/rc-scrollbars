@@ -18,6 +18,7 @@ order: 4
 | className | className for the root component | `string` | `undefined`
 | disableDefaultStyles | removes basic styling to ease visual customization | `boolean` | `false` 
 | hideTracksWhenNotNeeded | Hide tracks (`visibility: hidden`) when content does not overflow container. | `boolean` | `false` |
+| id | The `id` to apply to the root element | `string` | `undefined` |
 | onScroll | Event handler | `(e: React.UIEvent<HTMLElement>) => void` | `undefined` |
 | onScrollFrame | Runs inside the animation frame. Type of `ScrollValues` you can check below | `(values: ScrollValues) => void` | `undefined` |
 | onScrollStart | Called when scrolling starts | `() => void` | `undefined` |

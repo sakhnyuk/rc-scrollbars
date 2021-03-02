@@ -13,6 +13,7 @@ export interface ScrollbarsProps {
   classes?: Partial<StyleClasses>;
   disableDefaultStyles: boolean;
   hideTracksWhenNotNeeded?: boolean;
+  id?: string;
   onScroll?: (e: React.UIEvent<HTMLElement>) => void;
   onScrollFrame?: (values: ScrollValues) => void;
   onScrollStart?: () => void;
