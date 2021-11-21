@@ -9,10 +9,10 @@ rejuvenated project of <a href="https://github.com/malte-wessel/react-custom-scr
 
 * frictionless native browser scrolling
 * native scrollbars for mobile devices
-* [fully customizable](https://github.com/sakhnyuk/rc-scrollbars/blob/master/docs/customization.md)
-* [auto hide](https://github.com/sakhnyuk/rc-scrollbars/blob/master/docs/usage.md#auto-hide)
-* [auto height](https://github.com/sakhnyuk/rc-scrollbars/blob/master/docs/usage.md#auto-height)
-* [universal](https://github.com/sakhnyuk/rc-scrollbars/blob/master/docs/usage.md#universal-rendering) (runs on client & server)
+* [fully customizable](https://github.com/sakhnyuk/rc-scrollbars/blob/main/docs/customization.md)
+* [auto hide](https://github.com/sakhnyuk/rc-scrollbars/blob/main/docs/usage.md#auto-hide)
+* [auto height](https://github.com/sakhnyuk/rc-scrollbars/blob/main/docs/usage.md#auto-height)
+* [universal](https://github.com/sakhnyuk/rc-scrollbars/blob/main/docs/usage.md#universal-rendering) (runs on client & server)
 * `requestAnimationFrame` for 60fps
 * no extra stylesheets
 * well tested, 100% code coverage
