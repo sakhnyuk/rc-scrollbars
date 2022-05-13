@@ -2,7 +2,7 @@ import { CSSProperties, HTMLAttributes } from 'react';
 import * as React from 'react';
 
 export interface ScrollbarsProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   autoHeight: boolean;
   autoHeightMax: number | string;
   autoHeightMin: number | string;
