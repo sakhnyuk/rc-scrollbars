@@ -11,6 +11,7 @@ export default function getScrollbarWidth() {
 
   if (pxRatio !== newPxRatio) {
     scrollbarWidth = getScrollbarWidthFromDom();
+    pxRatio = newPxRatio;
   }
 
   if (typeof scrollbarWidth === 'number') return scrollbarWidth;
